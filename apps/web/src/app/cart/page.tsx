@@ -237,40 +237,67 @@ export default function CartPage() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20, height: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100"
+                    className="p-4 rounded-2xl bg-gray-50 border border-gray-100"
                   >
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-16 h-16 rounded-xl object-cover shrink-0"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <p className="text-gray-900 font-semibold truncate">{item.name}</p>
-                      <p className="text-[#D4AF37] text-sm font-bold">{item.category}</p>
-                    </div>
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex items-start gap-3">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover shrink-0"
+                      />
+                      <div className="flex-1 min-w-0 pt-1">
+                        <p className="text-gray-900 font-semibold truncate text-sm sm:text-base">{item.name}</p>
+                        <p className="text-[#D4AF37] text-xs sm:text-sm font-bold">{item.category}</p>
+                        <span className="sm:hidden text-gray-400 text-xs mt-1 block">
+                          ₹{item.priceNum} × {item.quantity}
+                        </span>
+                      </div>
                       <button
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition-all"
+                        onClick={() => removeItem(item.id)}
+                        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-red-50 hover:bg-red-100 text-red-400 flex items-center justify-center transition-all shrink-0"
                       >
-                        <Minus size={12} />
-                      </button>
-                      <span className="text-gray-900 font-bold w-6 text-center">
-                        {item.quantity}
-                      </span>
-                      <button
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="w-8 h-8 rounded-full bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center transition-all"
-                      >
-                        <Plus size={12} />
+                        <Trash2 size={12} />
                       </button>
                     </div>
-                    <button
-                      onClick={() => removeItem(item.id)}
-                      className="w-8 h-8 rounded-full bg-red-50 hover:bg-red-100 text-red-400 flex items-center justify-center transition-all shrink-0"
-                    >
-                      <Trash2 size={13} />
-                    </button>
+                    <div className="sm:hidden flex items-center justify-between mt-3 pt-3 border-t border-gray-200/60">
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition-all"
+                        >
+                          <Minus size={12} />
+                        </button>
+                        <span className="text-gray-900 font-bold w-8 text-center">
+                          {item.quantity}
+                        </span>
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          className="w-8 h-8 rounded-full bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center transition-all"
+                        >
+                          <Plus size={12} />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="hidden sm:flex items-center justify-between mt-0">
+                      <div className="flex-1"></div>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition-all"
+                        >
+                          <Minus size={12} />
+                        </button>
+                        <span className="text-gray-900 font-bold w-6 text-center">
+                          {item.quantity}
+                        </span>
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          className="w-8 h-8 rounded-full bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center transition-all"
+                        >
+                          <Plus size={12} />
+                        </button>
+                      </div>
+                    </div>
                   </motion.div>
                 ))}
               </AnimatePresence>
