@@ -16,8 +16,8 @@ export function Navbar() {
       <div className="container mx-auto px-6 h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-xl md:text-2xl font-bold tracking-tighter text-gray-900 group-hover:text-[#D4AF37] transition-colors">
-            APPLE<span className="text-[#D4AF37]">CATERERS</span>
+          <span className="text-xl md:text-2xl font-bold tracking-tighter text-gray-900 group-hover:text-maroon transition-colors">
+            APPLE<span className="text-gold">CATERERS</span>
           </span>
         </Link>
 
@@ -32,10 +32,10 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-semibold tracking-widest uppercase text-gray-600 hover:text-[#D4AF37] transition-colors relative group"
+              className="text-sm font-semibold tracking-widest uppercase text-gray-600 hover:text-maroon transition-colors relative group"
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-maroon transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </div>
@@ -54,7 +54,7 @@ export function Navbar() {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
-                  className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#D4AF37] text-black text-[10px] font-black rounded-full flex items-center justify-center"
+                  className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-maroon text-white text-[10px] font-black rounded-full flex items-center justify-center"
                 >
                   {cartCount}
                 </motion.span>
@@ -64,7 +64,7 @@ export function Navbar() {
 
           <Link
             href="https://wa.me/1234567890"
-            className="flex items-center gap-2 bg-[#D4AF37] hover:bg-[#c49b2e] text-black px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all hover:scale-105"
+            className="flex items-center gap-2 bg-maroon hover:bg-[#5a1f28] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all hover:scale-105"
           >
             <MessageSquare size={14} />
             Inquiry
@@ -99,7 +99,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-3xl font-serif text-gray-900 hover:text-[#D4AF37] transition-colors"
+                className="text-3xl font-serif text-gray-900 hover:text-maroon transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
@@ -107,19 +107,19 @@ export function Navbar() {
             ))}
             <Link
               href="/cart"
-              className="flex items-center gap-2 text-2xl font-serif text-gray-900 hover:text-[#D4AF37] transition-colors"
+              className="flex items-center gap-2 text-2xl font-serif text-gray-900 hover:text-maroon transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Cart
               {cartCount > 0 && (
-                <span className="w-7 h-7 bg-[#D4AF37] text-black text-xs font-black rounded-full flex items-center justify-center">
+                <span className="w-7 h-7 bg-maroon text-white text-xs font-black rounded-full flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
             </Link>
             <Link
               href="https://wa.me/1234567890"
-              className="mt-8 bg-[#D4AF37] text-black px-10 py-4 rounded-full font-bold"
+              className="mt-8 bg-maroon text-white px-10 py-4 rounded-full font-bold"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               WhatsApp Us

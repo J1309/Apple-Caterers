@@ -43,11 +43,11 @@ export function Services() {
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20 space-y-4">
-          <span className="text-[#D4AF37] font-semibold tracking-widest uppercase text-sm">
+          <span className="text-maroon font-semibold tracking-widest uppercase text-sm">
             Our Expertise
           </span>
           <h2 className="text-4xl md:text-5xl font-serif text-gray-900">
-            Bespoke Catering <span className="italic text-[#D4AF37]">Solutions</span>
+            Bespoke Catering <span className="italic text-gold">Solutions</span>
           </h2>
         </div>
 
@@ -69,14 +69,14 @@ export function Services() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
 
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <div className="w-12 h-12 rounded-2xl bg-[#D4AF37] flex items-center justify-center text-black mb-6 transform transition-transform group-hover:rotate-12">
+                <div className="w-12 h-12 rounded-2xl bg-maroon flex items-center justify-center text-black mb-6 transform transition-transform group-hover:rotate-12">
                   <service.icon size={24} />
                 </div>
                 <h3 className="text-2xl font-serif text-white mb-3">{service.title}</h3>
                 <p className="text-white/60 text-sm leading-relaxed transform transition-all duration-300 group-hover:text-white">
                   {service.description}
                 </p>
-                <div className="mt-6 h-1 w-0 bg-[#D4AF37] transition-all duration-500 group-hover:w-full" />
+                <div className="mt-6 h-1 w-0 bg-maroon transition-all duration-500 group-hover:w-full" />
               </div>
             </motion.div>
           ))}

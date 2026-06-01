@@ -41,7 +41,7 @@ export default function ContactPage() {
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-[#D4AF37] font-semibold tracking-widest uppercase text-sm"
+                className="text-maroon font-semibold tracking-widest uppercase text-sm"
               >
                 Let's Collaborate
               </motion.span>
@@ -51,7 +51,7 @@ export default function ContactPage() {
                 className="text-4xl md:text-6xl font-serif text-gray-900"
               >
                 Start Your <br />
-                <span className="italic text-[#D4AF37]">Culinary Story</span>
+                <span className="italic text-gold">Culinary Story</span>
               </motion.h1>
               <p className="text-gray-500 text-lg leading-relaxed max-w-md">
                 We're here to answer any questions and help you plan an unforgettable catering
@@ -87,7 +87,7 @@ export default function ContactPage() {
                   transition={{ delay: i * 0.1 }}
                   className="flex items-start gap-6 group"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all">
+                  <div className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gold group-hover:bg-maroon group-hover:text-white transition-all">
                     <item.icon size={22} />
                   </div>
                   <div>
@@ -102,7 +102,7 @@ export default function ContactPage() {
             <div className="pt-8 flex gap-6">
               <Link
                 href="https://wa.me/1234567890"
-                className="flex items-center gap-3 text-gray-700 font-bold hover:text-[#D4AF37] transition-colors"
+                className="flex items-center gap-3 text-gray-700 font-bold hover:text-maroon transition-colors"
               >
                 <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center">
                   <MessageSquare size={18} />
@@ -124,7 +124,7 @@ export default function ContactPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="text-center py-20 space-y-6"
               >
-                <div className="w-20 h-20 rounded-full bg-[#D4AF37] flex items-center justify-center text-black mx-auto shadow-[0_0_40px_rgba(212,175,55,0.4)]">
+                <div className="w-20 h-20 rounded-full bg-gold flex items-center justify-center text-maroon mx-auto shadow-[0_0_40px_rgba(212,175,55,0.4)]">
                   <CheckCircle2 size={40} />
                 </div>
                 <h2 className="text-3xl font-serif text-gray-900">Thank You!</h2>
@@ -133,7 +133,7 @@ export default function ContactPage() {
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
-                  className="text-[#D4AF37] font-bold text-sm underline underline-offset-8"
+                  className="text-gold font-bold text-sm underline underline-offset-8"
                 >
                   Send another inquiry
                 </button>
@@ -148,7 +148,7 @@ export default function ContactPage() {
                     <input
                       {...register('name', { required: true })}
                       placeholder="John Doe"
-                      className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-[#D4AF37] transition-colors placeholder-gray-300"
+                      className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-maroon transition-colors placeholder-gray-300"
                     />
                   </div>
                   <div className="space-y-2">
@@ -158,7 +158,7 @@ export default function ContactPage() {
                     <input
                       {...register('phone', { required: true })}
                       placeholder="+1 (234) 000-0000"
-                      className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-[#D4AF37] transition-colors"
+                      className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-maroon transition-colors"
                     />
                   </div>
                 </div>
@@ -171,7 +171,7 @@ export default function ContactPage() {
                     <input
                       {...register('date', { required: true })}
                       type="date"
-                      className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-[#D4AF37] transition-colors"
+                      className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-maroon transition-colors"
                     />
                   </div>
                   <div className="space-y-2">
@@ -180,7 +180,7 @@ export default function ContactPage() {
                     </label>
                     <select
                       {...register('type', { required: true })}
-                      className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-[#D4AF37] transition-colors appearance-none"
+                      className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-maroon transition-colors appearance-none"
                     >
                       <option value="Wedding">Wedding</option>
                       <option value="Corporate">Corporate</option>
@@ -198,7 +198,7 @@ export default function ContactPage() {
                     {...register('guests', { required: true })}
                     type="number"
                     placeholder="50"
-                    className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-[#D4AF37] transition-colors"
+                    className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-maroon transition-colors"
                   />
                 </div>
 
@@ -210,13 +210,13 @@ export default function ContactPage() {
                     {...register('message', { required: true })}
                     placeholder="Tell us about your event..."
                     rows={4}
-                    className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none placeholder-gray-300"
+                    className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-maroon transition-colors resize-none placeholder-gray-300"
                   />
                 </div>
 
                 <button
                   disabled={isSubmitting}
-                  className="w-full bg-[#D4AF37] hover:bg-white text-black py-5 rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                  className="w-full bg-maroon hover:bg-white text-white hover:text-maroon py-5 rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-3 disabled:opacity-50"
                 >
                   {isSubmitting ? 'Processing...' : 'Submit Inquiry'}
                   {!isSubmitting && <Send size={20} />}

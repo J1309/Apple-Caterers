@@ -36,14 +36,14 @@ export function Hero() {
   return (
     <section className="relative min-h-screen bg-white flex items-center overflow-hidden pt-16">
       {/* Decorative background blobs */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/6 rounded-full blur-[120px] -translate-y-1/4 translate-x-1/4 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/6 rounded-full blur-[120px] -translate-y-1/4 translate-x-1/4 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-100/60 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4 pointer-events-none" />
 
       {/* Subtle dot-grid pattern */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.035]"
         style={{
-          backgroundImage: 'radial-gradient(circle, #D4AF37 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, var(--color-gold) 1px, transparent 1px)',
           backgroundSize: '28px 28px',
         }}
       />
@@ -57,10 +57,10 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-full px-5 py-2"
+              className="inline-flex items-center gap-2 bg-maroon/10 border border-maroon/20 rounded-full px-5 py-2"
             >
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-              <span className="text-[#b8962e] text-xs font-bold uppercase tracking-widest">
+              <span className="w-2 h-2 rounded-full bg-gold" />
+              <span className="text-[#5a1f28] text-xs font-bold uppercase tracking-widest">
                 Authentic Kerala Cuisine
               </span>
             </motion.div>
@@ -72,7 +72,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-5xl md:text-6xl lg:text-7xl font-serif text-gray-900 leading-[1.08] tracking-tight"
             >
-              The Taste of <span className="italic text-[#D4AF37]">Kerala</span>
+              The Taste of <span className="italic text-gold">Kerala</span>
               <br />
               at Your Event
             </motion.h1>
@@ -97,7 +97,7 @@ export function Hero() {
             >
               <div className="flex">
                 {[1, 2, 3, 4, 5].map((s) => (
-                  <Star key={s} size={16} fill="#D4AF37" className="text-[#D4AF37]" />
+                  <Star key={s} size={16} fill="var(--color-gold)" className="text-gold" />
                 ))}
               </div>
               <p className="text-gray-500 text-sm">
@@ -115,16 +115,16 @@ export function Hero() {
             >
               <Link
                 href="/menu"
-                className="group flex items-center gap-2 bg-gray-900 hover:bg-[#D4AF37] text-white hover:text-black px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider transition-all hover:scale-105 shadow-sm"
+                className="group flex items-center gap-2 bg-gray-900 hover:bg-maroon text-white hover:text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider transition-all hover:scale-105 shadow-sm"
               >
                 Explore Menu
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="https://wa.me/1234567890"
-                className="group flex items-center gap-3 text-gray-700 hover:text-[#D4AF37] font-semibold transition-colors"
+                className="group flex items-center gap-3 text-gray-700 hover:text-maroon font-semibold transition-colors"
               >
-                <div className="w-11 h-11 rounded-full border-2 border-gray-200 group-hover:border-[#D4AF37] flex items-center justify-center transition-all">
+                <div className="w-11 h-11 rounded-full border-2 border-gray-200 group-hover:border-maroon flex items-center justify-center transition-all">
                   <MessageSquare size={18} />
                 </div>
                 WhatsApp Us
@@ -140,7 +140,7 @@ export function Hero() {
             >
               {stats.map((stat, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  <stat.icon size={16} className="text-[#D4AF37] shrink-0" />
+                  <stat.icon size={16} className="text-maroon shrink-0" />
                   <div>
                     <p className="text-gray-900 font-bold text-base leading-none">{stat.value}</p>
                     <p className="text-gray-400 text-xs mt-0.5">{stat.label}</p>
@@ -166,7 +166,7 @@ export function Hero() {
                 className="w-full h-40 object-cover"
               />
               <div className="bg-white p-4">
-                <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-widest">
+                <span className="text-maroon text-[10px] font-black uppercase tracking-widest">
                   {floatingCards[0].tag}
                 </span>
                 <p className="text-gray-900 font-serif text-sm mt-0.5">{floatingCards[0].label}</p>
@@ -187,7 +187,7 @@ export function Hero() {
                 className="w-full h-52 object-cover"
               />
               <div className="bg-white p-5">
-                <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-widest">
+                <span className="text-maroon text-[10px] font-black uppercase tracking-widest">
                   {floatingCards[1].tag}
                 </span>
                 <p className="text-gray-900 font-serif text-base mt-0.5">
@@ -195,7 +195,7 @@ export function Hero() {
                 </p>
                 <div className="flex items-center gap-1 mt-2">
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} size={11} fill="#D4AF37" className="text-[#D4AF37]" />
+                    <Star key={s} size={11} fill="var(--color-gold)" className="text-gold" />
                   ))}
                   <span className="text-gray-400 text-xs ml-1">5.0</span>
                 </div>
@@ -216,7 +216,7 @@ export function Hero() {
                 className="w-full h-40 object-cover"
               />
               <div className="bg-white p-4">
-                <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-widest">
+                <span className="text-maroon text-[10px] font-black uppercase tracking-widest">
                   {floatingCards[2].tag}
                 </span>
                 <p className="text-gray-900 font-serif text-sm mt-0.5">{floatingCards[2].label}</p>
@@ -224,8 +224,8 @@ export function Hero() {
             </motion.div>
 
             {/* Decorative gold ring */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full border-2 border-dashed border-[#D4AF37]/20 pointer-events-none" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-52 h-52 rounded-full bg-[#D4AF37]/5 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full border-2 border-dashed border-gold/20 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-52 h-52 rounded-full bg-gold/5 pointer-events-none" />
           </div>
         </div>
       </div>
