@@ -70,8 +70,9 @@ export default function MenuPage() {
         </div>
 
         {/* Categories Bar - horizontal scroll */}
-        <div className="overflow-x-auto pb-2 mb-16 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div className="flex gap-3">
+        <div className="relative mb-16">
+          <div className="overflow-x-auto pb-2">
+            <div className="flex gap-3">
             {categories.map((cat) => {
               const isAll = cat === 'All';
               const info = !isAll ? CATEGORY_MAP[cat as keyof typeof CATEGORY_MAP] : null;
@@ -98,6 +99,7 @@ export default function MenuPage() {
                 </button>
               );
             })}
+          </div>
           </div>
         </div>
 
