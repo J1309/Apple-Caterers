@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Plus, Minus, ShoppingBag, Check, Utensils } from 'lucide-react';
+import { Plus, Minus, ShoppingBag, Check, Utensils, LayoutGrid } from 'lucide-react';
 import { useCartStore } from '@/lib/cart-store';
-import { menuItems, categories } from '@/data/menu-items';
+import { menuItems, categories, CATEGORY_MAP } from '@/data/menu-items';
 import Link from 'next/link';
 
 export default function MenuPage() {
@@ -69,21 +69,36 @@ export default function MenuPage() {
           </motion.p>
         </div>
 
-        {/* Categories Bar */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
-                activeCategory === cat
-                  ? 'bg-maroon border-maroon text-white shadow-[0_4px_16px_rgba(114,47,55,0.3)]'
-                  : 'bg-white border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-400'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        {/* Categories Bar - horizontal scroll */}
+        <div className="overflow-x-auto pb-2 mb-16 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex gap-3">
+            {categories.map((cat) => {
+              const isAll = cat === 'All';
+              const info = !isAll ? CATEGORY_MAP[cat as keyof typeof CATEGORY_MAP] : null;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`flex flex-col items-center justify-center gap-2 min-w-[120px] h-[100px] rounded-2xl border transition-all duration-300 shrink-0 snap-start ${
+                    activeCategory === cat
+                      ? isAll
+                        ? 'bg-maroon border-maroon text-white shadow-[0_4px_16px_rgba(114,47,55,0.3)]'
+                        : `bg-gradient-to-br ${info?.gradient} text-white border-transparent shadow-lg`
+                      : 'bg-white border-gray-200 text-gray-500 hover:border-gray-400 hover:text-gray-900'
+                  }`}
+                >
+                  {isAll ? (
+                    <LayoutGrid size={22} className="shrink-0" />
+                  ) : (
+                    <span className="text-2xl">{info?.icon}</span>
+                  )}
+                  <span className="text-xs font-semibold text-center leading-tight max-w-[100px]">
+                    {cat}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Grid */}
