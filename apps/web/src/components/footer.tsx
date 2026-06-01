@@ -53,7 +53,7 @@ const TwitterIcon = () => (
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white pt-20 pb-24 md:pb-12 border-t border-gray-800">
+    <footer className="bg-[#5a1f28] text-white pt-20 pb-24 md:pb-12 border-t border-white/10">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="space-y-6">
           <h3 className="text-xl font-bold tracking-tighter">

@@ -36,8 +36,8 @@ export function Hero() {
   return (
     <section className="relative min-h-screen bg-white flex items-center overflow-hidden pt-16">
       {/* Decorative background blobs */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/6 rounded-full blur-[120px] -translate-y-1/4 translate-x-1/4 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-100/60 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-maroon/6 rounded-full blur-[120px] -translate-y-1/4 translate-x-1/4 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-maroon/3 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4 pointer-events-none" />
 
       {/* Subtle dot-grid pattern */}
       <div

@@ -27,7 +27,7 @@ export function MobileBottomNav() {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5 }}
-        className="bg-white/95 backdrop-blur-2xl border border-gray-200 rounded-[32px] py-4 px-5 shadow-[0_8px_40px_rgba(0,0,0,0.10)] flex items-center justify-between"
+        className="bg-maroon/95 backdrop-blur-2xl border border-white/10 rounded-[32px] py-4 px-5 shadow-[0_8px_40px_rgba(0,0,0,0.10)] flex items-center justify-between"
       >
         {navItems.map((item) => {
           const isActive = pathname === item.href;
@@ -40,7 +40,7 @@ export function MobileBottomNav() {
               href={item.href}
               className={cn(
                 'flex flex-col items-center gap-1.5 transition-all duration-300 relative',
-                isActive ? 'text-maroon' : 'text-gray-400'
+                isActive ? 'text-gold' : 'text-white/50'
               )}
             >
               <motion.div
@@ -57,7 +57,7 @@ export function MobileBottomNav() {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       exit={{ scale: 0 }}
-                      className="absolute -top-2 -right-2 w-4 h-4 bg-maroon text-white text-[9px] font-black rounded-full flex items-center justify-center"
+                      className="absolute -top-2 -right-2 w-4 h-4 bg-gold text-maroon text-[9px] font-black rounded-full flex items-center justify-center"
                     >
                       {cartCount > 9 ? '9+' : cartCount}
                     </motion.span>
@@ -75,7 +75,7 @@ export function MobileBottomNav() {
               {isActive && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute -bottom-2.5 w-1 h-1 rounded-full bg-maroon shadow-[0_0_12px_var(--color-maroon)]"
+                  className="absolute -bottom-2.5 w-1 h-1 rounded-full bg-gold shadow-[0_0_12px_var(--color-gold)]"
                 />
               )}
             </Link>
