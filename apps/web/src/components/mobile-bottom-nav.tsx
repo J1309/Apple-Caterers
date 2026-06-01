@@ -40,7 +40,7 @@ export function MobileBottomNav() {
               href={item.href}
               className={cn(
                 'flex flex-col items-center gap-1.5 transition-all duration-300 relative',
-                isActive ? 'text-[#D4AF37]' : 'text-gray-400'
+                isActive ? 'text-maroon' : 'text-gray-400'
               )}
             >
               <motion.div
@@ -57,7 +57,7 @@ export function MobileBottomNav() {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       exit={{ scale: 0 }}
-                      className="absolute -top-2 -right-2 w-4 h-4 bg-[#D4AF37] text-black text-[9px] font-black rounded-full flex items-center justify-center"
+                      className="absolute -top-2 -right-2 w-4 h-4 bg-maroon text-white text-[9px] font-black rounded-full flex items-center justify-center"
                     >
                       {cartCount > 9 ? '9+' : cartCount}
                     </motion.span>
@@ -75,7 +75,7 @@ export function MobileBottomNav() {
               {isActive && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute -bottom-2.5 w-1 h-1 rounded-full bg-[#D4AF37] shadow-[0_0_12px_#D4AF37]"
+                  className="absolute -bottom-2.5 w-1 h-1 rounded-full bg-maroon shadow-[0_0_12px_var(--color-maroon)]"
                 />
               )}
             </Link>

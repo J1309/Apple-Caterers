@@ -9,8 +9,8 @@ export function CTASection() {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       {/* Background elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
 
       <div className="container mx-auto px-6 relative z-10 text-center">
         <motion.div
@@ -22,7 +22,7 @@ export function CTASection() {
         >
           <h2 className="text-4xl md:text-6xl font-serif text-gray-900 mb-8 leading-tight">
             Ready to Plan Your <br />
-            <span className="italic text-[#D4AF37]">Next Event?</span>
+            <span className="italic text-gold">Next Event?</span>
           </h2>
           <p className="text-gray-500 text-lg mb-12 max-w-xl mx-auto">
             Contact us today for a bespoke proposal tailored to your vision. Let's create something
@@ -32,7 +32,7 @@ export function CTASection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link
               href="/contact"
-              className="bg-[#D4AF37] text-black px-10 py-5 rounded-full font-bold text-lg transition-all hover:scale-105 hover:bg-white flex items-center gap-2"
+              className="bg-maroon text-white px-10 py-5 rounded-full font-bold text-lg transition-all hover:scale-105 hover:bg-white hover:text-maroon flex items-center gap-2"
             >
               Get a Proposal
               <ArrowRight size={20} />
@@ -41,16 +41,16 @@ export function CTASection() {
             <div className="flex items-center gap-8">
               <Link
                 href="https://wa.me/1234567890"
-                className="flex items-center gap-2 text-gray-600 hover:text-[#D4AF37] transition-colors"
+                className="flex items-center gap-2 text-gray-600 hover:text-maroon transition-colors"
               >
-                <MessageSquare size={20} className="text-[#D4AF37]" />
+                <MessageSquare size={20} className="text-maroon" />
                 <span>WhatsApp</span>
               </Link>
               <Link
                 href="tel:+1234567890"
-                className="flex items-center gap-2 text-gray-600 hover:text-[#D4AF37] transition-colors"
+                className="flex items-center gap-2 text-gray-600 hover:text-maroon transition-colors"
               >
-                <Phone size={20} className="text-[#D4AF37]" />
+                <Phone size={20} className="text-maroon" />
                 <span>Call Now</span>
               </Link>
             </div>

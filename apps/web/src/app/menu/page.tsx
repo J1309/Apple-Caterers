@@ -47,7 +47,7 @@ export default function MenuPage() {
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-[#D4AF37] font-semibold tracking-widest uppercase text-sm"
+            className="text-maroon font-semibold tracking-widest uppercase text-sm"
           >
             Authentic Kerala Cuisine
           </motion.span>
@@ -56,7 +56,7 @@ export default function MenuPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-serif text-gray-900"
           >
-            Our Catering <span className="italic text-[#D4AF37]">Menu</span>
+            Our Catering <span className="italic text-gold">Menu</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -77,7 +77,7 @@ export default function MenuPage() {
               onClick={() => setActiveCategory(cat)}
               className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
                 activeCategory === cat
-                  ? 'bg-[#D4AF37] border-[#D4AF37] text-black shadow-[0_4px_16px_rgba(212,175,55,0.3)]'
+                  ? 'bg-maroon border-maroon text-white shadow-[0_4px_16px_rgba(114,47,55,0.3)]'
                   : 'bg-white border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-400'
               }`}
             >
@@ -110,7 +110,7 @@ export default function MenuPage() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
                       transition={{ duration: 0.5, ease: 'easeOut' }}
-                      className="group bg-white rounded-[40px] border border-gray-100 shadow-sm overflow-hidden hover:border-[#D4AF37]/40 hover:shadow-md transition-all duration-500 flex flex-col h-full"
+                      className="group bg-white rounded-[40px] border border-gray-100 shadow-sm overflow-hidden hover:border-maroon/40 hover:shadow-md transition-all duration-500 flex flex-col h-full"
                     >
                       <div className="relative h-[260px] overflow-hidden">
                         {item.image ? (
@@ -125,7 +125,7 @@ export default function MenuPage() {
                           </div>
                         )}
                         {cartItem && (
-                          <div className="absolute top-5 left-5 bg-[#D4AF37] text-black text-xs font-black px-3 py-1 rounded-full">
+                          <div className="absolute top-5 left-5 bg-maroon text-white text-xs font-black px-3 py-1 rounded-full">
                             ×{cartItem.quantity} in cart
                           </div>
                         )}
@@ -133,7 +133,7 @@ export default function MenuPage() {
 
                       <div className="p-8 flex flex-col flex-grow">
                         <div className="flex items-center justify-between mb-3">
-                          <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-bold">
+                          <span className="text-maroon text-[10px] uppercase tracking-widest font-bold">
                             {item.category}
                           </span>
                         </div>
@@ -160,7 +160,7 @@ export default function MenuPage() {
                             </span>
                             <button
                               onClick={() => updateQuantity(item.id, cartItem.quantity + 1)}
-                              className="w-12 h-12 rounded-2xl bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center transition-all border border-[#D4AF37]/20"
+                              className="w-12 h-12 rounded-2xl bg-maroon/10 hover:bg-maroon/20 text-maroon flex items-center justify-center transition-all border border-maroon/20"
                             >
                               <Plus size={16} />
                             </button>
@@ -172,7 +172,7 @@ export default function MenuPage() {
                             className={`w-full py-4 rounded-2xl text-sm font-bold transition-all flex items-center justify-center gap-2 border ${
                               isAdded
                                 ? 'bg-green-50 border-green-200 text-green-600'
-                                : 'bg-gray-50 hover:bg-[#D4AF37] hover:text-black text-gray-700 border-gray-200 hover:border-[#D4AF37]'
+                                : 'bg-gray-50 hover:bg-maroon hover:text-white text-gray-700 border-gray-200 hover:border-maroon'
                             }`}
                           >
                             {isAdded ? (
@@ -208,11 +208,11 @@ export default function MenuPage() {
           >
             <Link
               href="/cart"
-              className="flex items-center gap-4 bg-[#D4AF37] text-black px-8 py-4 rounded-full shadow-[0_8px_40px_rgba(212,175,55,0.45)] hover:scale-105 transition-transform font-black text-sm uppercase tracking-wider"
+              className="flex items-center gap-4 bg-maroon text-white px-8 py-4 rounded-full shadow-[0_8px_40px_rgba(114,47,55,0.45)] hover:scale-105 transition-transform font-black text-sm uppercase tracking-wider"
             >
               <div className="relative">
                 <ShoppingBag size={22} />
-                <span className="absolute -top-2 -right-2 w-5 h-5 bg-black text-[#D4AF37] text-[10px] font-black rounded-full flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 w-5 h-5 bg-gold text-maroon text-[10px] font-black rounded-full flex items-center justify-center">
                   {cartCount}
                 </span>
               </div>

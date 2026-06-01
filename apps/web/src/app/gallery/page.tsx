@@ -93,11 +93,11 @@ export default function GalleryPage() {
     <div className="pt-32 pb-24 bg-white min-h-screen">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 space-y-4">
-          <span className="text-[#D4AF37] font-semibold tracking-widest uppercase text-sm">
+          <span className="text-maroon font-semibold tracking-widest uppercase text-sm">
             Visual Journey
           </span>
           <h1 className="text-4xl md:text-6xl font-serif text-gray-900">
-            Event <span className="italic text-[#D4AF37]">Galleries</span>
+            Event <span className="italic text-gold">Galleries</span>
           </h1>
         </div>
 
@@ -108,7 +108,7 @@ export default function GalleryPage() {
               onClick={() => setActiveCategory(cat)}
               className={`px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-300 border ${
                 activeCategory === cat
-                  ? 'bg-[#D4AF37] text-black border-[#D4AF37]'
+                  ? 'bg-maroon text-white border-maroon'
                   : 'bg-white border-gray-200 text-gray-400 hover:text-gray-900 hover:border-gray-300'
               }`}
             >
@@ -139,7 +139,7 @@ export default function GalleryPage() {
                       className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                      <span className="text-[#D4AF37] text-[10px] uppercase tracking-[0.2em] font-bold mb-2">
+                      <span className="text-gold text-[10px] uppercase tracking-[0.2em] font-bold mb-2">
                         {item.category}
                       </span>
                       <h3 className="text-white text-xl font-serif">{item.title}</h3>
@@ -176,11 +176,11 @@ export default function GalleryPage() {
               <img
                 src={selectedImage.image}
                 alt={selectedImage.title}
-                className="max-w-full max-h-[80vh] rounded-2xl object-contain shadow-2xl shadow-[#D4AF37]/5"
+                className="max-w-full max-h-[80vh] rounded-2xl object-contain shadow-2xl shadow-gold/5"
               />
               <div className="absolute -bottom-16 left-0 right-0 text-center">
                 <h2 className="text-white text-2xl font-serif">{selectedImage.title}</h2>
-                <p className="text-[#D4AF37] uppercase tracking-widest text-xs mt-2">
+                <p className="text-gold uppercase tracking-widest text-xs mt-2">
                   {selectedImage.category}
                 </p>
               </div>

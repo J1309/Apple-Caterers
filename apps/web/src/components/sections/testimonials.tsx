@@ -33,11 +33,11 @@ export function Testimonials() {
     <section className="py-24 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <span className="text-[#D4AF37] font-semibold tracking-widest uppercase text-sm mb-4 block">
+          <span className="text-maroon font-semibold tracking-widest uppercase text-sm mb-4 block">
             Testimonials
           </span>
           <h2 className="text-4xl md:text-5xl font-serif text-gray-900 italic">
-            Words From Our <span className="text-[#D4AF37] not-italic font-bold">Guests</span>
+            Words From Our <span className="text-gold not-italic font-bold">Guests</span>
           </h2>
         </div>
 
@@ -51,16 +51,16 @@ export function Testimonials() {
               viewport={{ once: true }}
               className="bg-white p-10 rounded-[40px] border border-gray-100 shadow-sm relative"
             >
-              <Quote className="absolute top-8 right-8 text-[#D4AF37]/20" size={60} />
+              <Quote className="absolute top-8 right-8 text-gold/20" size={60} />
               <div className="flex items-center gap-4 mb-8">
                 <img
                   src={t.image}
                   alt={t.name}
-                  className="w-14 h-14 rounded-full object-cover border-2 border-[#D4AF37]"
+                  className="w-14 h-14 rounded-full object-cover border-2 border-maroon"
                 />
                 <div>
                   <h4 className="text-gray-900 font-bold">{t.name}</h4>
-                  <p className="text-[#D4AF37] text-xs uppercase tracking-widest">{t.role}</p>
+                  <p className="text-maroon text-xs uppercase tracking-widest">{t.role}</p>
                 </div>
               </div>
               <p className="text-gray-600 italic leading-relaxed">"{t.text}"</p>

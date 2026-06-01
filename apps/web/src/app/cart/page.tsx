@@ -127,9 +127,9 @@ export default function CartPage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-            className="w-24 h-24 rounded-full bg-[#D4AF37]/10 border-2 border-[#D4AF37] flex items-center justify-center mx-auto"
+            className="w-24 h-24 rounded-full bg-maroon/10 border-2 border-maroon flex items-center justify-center mx-auto"
           >
-            <CheckCircle size={48} className="text-[#D4AF37]" />
+            <CheckCircle size={48} className="text-maroon" />
           </motion.div>
           <div className="space-y-3">
             <h2 className="text-3xl font-serif text-gray-900">Enquiry Sent!</h2>
@@ -140,7 +140,7 @@ export default function CartPage() {
           </div>
           <Link
             href="/menu"
-            className="inline-flex items-center gap-2 bg-[#D4AF37] text-black px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform"
+            className="inline-flex items-center gap-2 bg-maroon text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform"
           >
             Back to Menu
           </Link>
@@ -169,7 +169,7 @@ export default function CartPage() {
           </div>
           <Link
             href="/menu"
-            className="inline-flex items-center gap-2 bg-[#D4AF37] text-black px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform"
+            className="inline-flex items-center gap-2 bg-maroon text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform"
           >
             <ArrowLeft size={16} />
             Browse Menu
@@ -190,13 +190,13 @@ export default function CartPage() {
         >
           <Link
             href="/menu"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-[#D4AF37] text-sm font-medium transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-maroon text-sm font-medium transition-colors mb-6"
           >
             <ArrowLeft size={16} />
             Back to Menu
           </Link>
           <h1 className="text-4xl md:text-5xl font-serif text-gray-900">
-            Your <span className="italic text-[#D4AF37]">Selection</span>
+            Your <span className="italic text-gold">Selection</span>
           </h1>
           <p className="text-gray-400 mt-2 text-sm">
             Review your items, then fill in your event details to send us an enquiry.
@@ -215,7 +215,7 @@ export default function CartPage() {
             >
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-serif text-gray-900 flex items-center gap-3">
-                  <ShoppingBag size={20} className="text-[#D4AF37]" />
+                  <ShoppingBag size={20} className="text-maroon" />
                   Selected Dishes
                   <span className="text-sm font-normal text-gray-400">({cartCount} items)</span>
                 </h2>
@@ -246,7 +246,7 @@ export default function CartPage() {
                       />
                       <div className="flex-1 min-w-0 pt-1">
                         <p className="text-gray-900 font-semibold truncate text-sm sm:text-base">{item.name}</p>
-                        <p className="text-[#D4AF37] text-xs sm:text-sm font-bold">{item.category}</p>
+                        <p className="text-maroon text-xs sm:text-sm font-bold">{item.category}</p>
                       </div>
                       <button
                         onClick={() => removeItem(item.id)}
@@ -268,7 +268,7 @@ export default function CartPage() {
                         </span>
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="w-8 h-8 rounded-full bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center transition-all"
+                          className="w-8 h-8 rounded-full bg-maroon/10 hover:bg-maroon/20 text-maroon flex items-center justify-center transition-all"
                         >
                           <Plus size={12} />
                         </button>
@@ -288,7 +288,7 @@ export default function CartPage() {
                         </span>
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="w-8 h-8 rounded-full bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 text-[#D4AF37] flex items-center justify-center transition-all"
+                          className="w-8 h-8 rounded-full bg-maroon/10 hover:bg-maroon/20 text-maroon flex items-center justify-center transition-all"
                         >
                           <Plus size={12} />
                         </button>
@@ -312,27 +312,27 @@ export default function CartPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest font-semibold">
-                    <User size={13} className="text-[#D4AF37]" /> Full Name
+                    <User size={13} className="text-maroon" /> Full Name
                   </label>
                   <input
                     type="text"
                     value={form.name}
                     onChange={(e) => handleChange('name', e.target.value)}
                     placeholder="Rahul Menon"
-                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-[#D4AF37] transition-colors ${errors.name ? 'border-red-300' : 'border-gray-200'}`}
+                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-maroon transition-colors ${errors.name ? 'border-red-300' : 'border-gray-200'}`}
                   />
                   {errors.name && <p className="text-red-400 text-xs">{errors.name}</p>}
                 </div>
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest font-semibold">
-                    <MapPin size={13} className="text-[#D4AF37]" /> City / Place
+                    <MapPin size={13} className="text-maroon" /> City / Place
                   </label>
                   <input
                     type="text"
                     value={form.place}
                     onChange={(e) => handleChange('place', e.target.value)}
                     placeholder="Kochi, Kerala"
-                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-[#D4AF37] transition-colors ${errors.place ? 'border-red-300' : 'border-gray-200'}`}
+                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-maroon transition-colors ${errors.place ? 'border-red-300' : 'border-gray-200'}`}
                   />
                   {errors.place && <p className="text-red-400 text-xs">{errors.place}</p>}
                 </div>
@@ -340,7 +340,7 @@ export default function CartPage() {
 
               <div className="space-y-2">
                 <label className="flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest font-semibold">
-                  <Building2 size={13} className="text-[#D4AF37]" /> Event Type
+                  <Building2 size={13} className="text-maroon" /> Event Type
                 </label>
                 <div className="flex flex-wrap gap-3">
                   {eventTypes.map((type) => (
@@ -350,7 +350,7 @@ export default function CartPage() {
                       onClick={() => handleChange('eventType', type)}
                       className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all border ${
                         form.eventType === type
-                          ? 'bg-[#D4AF37] border-[#D4AF37] text-black shadow-[0_4px_12px_rgba(212,175,55,0.3)]'
+                          ? 'bg-maroon border-maroon text-white shadow-[0_4px_12px_rgba(114,47,55,0.3)]'
                           : 'bg-white border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-400'
                       }`}
                     >
@@ -364,27 +364,27 @@ export default function CartPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest font-semibold">
-                    <Calendar size={13} className="text-[#D4AF37]" /> Event Date
+                    <Calendar size={13} className="text-maroon" /> Event Date
                   </label>
                   <input
                     type="date"
                     value={form.eventDate}
                     onChange={(e) => handleChange('eventDate', e.target.value)}
                     style={{ colorScheme: 'light' }}
-                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm focus:outline-none focus:border-[#D4AF37] transition-colors ${errors.eventDate ? 'border-red-300' : 'border-gray-200'}`}
+                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm focus:outline-none focus:border-maroon transition-colors ${errors.eventDate ? 'border-red-300' : 'border-gray-200'}`}
                   />
                   {errors.eventDate && <p className="text-red-400 text-xs">{errors.eventDate}</p>}
                 </div>
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest font-semibold">
-                    <Clock size={13} className="text-[#D4AF37]" /> Event Time
+                    <Clock size={13} className="text-maroon" /> Event Time
                   </label>
                   <input
                     type="time"
                     value={form.eventTime}
                     onChange={(e) => handleChange('eventTime', e.target.value)}
                     style={{ colorScheme: 'light' }}
-                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm focus:outline-none focus:border-[#D4AF37] transition-colors ${errors.eventTime ? 'border-red-300' : 'border-gray-200'}`}
+                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm focus:outline-none focus:border-maroon transition-colors ${errors.eventTime ? 'border-red-300' : 'border-gray-200'}`}
                   />
                   {errors.eventTime && <p className="text-red-400 text-xs">{errors.eventTime}</p>}
                 </div>
@@ -393,20 +393,20 @@ export default function CartPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest font-semibold">
-                    <Building2 size={13} className="text-[#D4AF37]" /> Venue / Address
+                    <Building2 size={13} className="text-maroon" /> Venue / Address
                   </label>
                   <input
                     type="text"
                     value={form.venue}
                     onChange={(e) => handleChange('venue', e.target.value)}
                     placeholder="Taj Hotel, MG Road, Kochi"
-                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-[#D4AF37] transition-colors ${errors.venue ? 'border-red-300' : 'border-gray-200'}`}
+                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-maroon transition-colors ${errors.venue ? 'border-red-300' : 'border-gray-200'}`}
                   />
                   {errors.venue && <p className="text-red-400 text-xs">{errors.venue}</p>}
                 </div>
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest font-semibold">
-                    <Users size={13} className="text-[#D4AF37]" /> Number of Guests
+                    <Users size={13} className="text-maroon" /> Number of Guests
                   </label>
                   <input
                     type="number"
@@ -414,7 +414,7 @@ export default function CartPage() {
                     value={form.guestCount}
                     onChange={(e) => handleChange('guestCount', e.target.value)}
                     placeholder="e.g. 150"
-                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-[#D4AF37] transition-colors ${errors.guestCount ? 'border-red-300' : 'border-gray-200'}`}
+                    className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-maroon transition-colors ${errors.guestCount ? 'border-red-300' : 'border-gray-200'}`}
                   />
                   {errors.guestCount && <p className="text-red-400 text-xs">{errors.guestCount}</p>}
                 </div>
@@ -422,7 +422,7 @@ export default function CartPage() {
 
               <div className="space-y-2">
                 <label className="flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest font-semibold">
-                  <MessageSquare size={13} className="text-[#D4AF37]" />
+                  <MessageSquare size={13} className="text-maroon" />
                   Additional Notes
                   <span className="text-gray-300 normal-case tracking-normal text-xs">
                     (optional)
@@ -433,7 +433,7 @@ export default function CartPage() {
                   value={form.message}
                   onChange={(e) => handleChange('message', e.target.value)}
                   placeholder="Any dietary requirements, special requests, or additional information…"
-                  className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-maroon transition-colors resize-none"
                 />
               </div>
 
@@ -441,7 +441,7 @@ export default function CartPage() {
                 type="submit"
                 disabled={isSubmitting}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-[#D4AF37] hover:bg-[#c49b2e] text-black py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3 shadow-[0_8px_30px_rgba(212,175,55,0.25)] disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full bg-maroon hover:bg-[#5a1f28] text-white py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3 shadow-[0_8px_30px_rgba(114,47,55,0.25)] disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
