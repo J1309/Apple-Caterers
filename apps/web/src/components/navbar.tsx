@@ -16,9 +16,13 @@ export function Navbar() {
       <div className="container mx-auto px-6 h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl md:text-2xl font-bold tracking-tighter text-white transition-colors">
-            APPLE<span className="text-gold">CATERERS</span>
-          </span>
+          <motion.img
+            src="/images/logo/apple_c_logo.png"
+            alt="Apple Caterers"
+            className="h-8 md:h-10 object-contain"
+            whileHover={{ rotate: 10 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          />
         </Link>
 
         {/* Desktop Links */}
