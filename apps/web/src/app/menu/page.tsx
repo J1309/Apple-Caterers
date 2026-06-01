@@ -3,129 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Star, Plus, Minus, ShoppingBag, Check } from 'lucide-react';
+import { Plus, Minus, ShoppingBag, Check, Utensils } from 'lucide-react';
 import { useCartStore } from '@/lib/cart-store';
+import { menuItems, categories } from '@/data/menu-items';
 import Link from 'next/link';
-
-const categories = ['All', 'Starters', 'Main Course', 'Desserts', 'Beverages'];
-
-const menuItems = [
-  {
-    id: 1,
-    name: 'Fish Cutlet',
-    priceNum: 180,
-    category: 'Starters',
-    description:
-      'Crispy Kerala-style fried fish cutlets made with spiced mashed fish and breadcrumbs.',
-    image:
-      'https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=600&auto=format&fit=crop',
-    rating: 4.8,
-  },
-  {
-    id: 2,
-    name: 'Unnakaya',
-    priceNum: 150,
-    category: 'Starters',
-    description:
-      'Traditional stuffed banana fritters filled with sweetened coconut, egg and spices.',
-    image:
-      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=600&auto=format&fit=crop',
-    rating: 4.7,
-  },
-  {
-    id: 3,
-    name: 'Pappadam & Chutneys',
-    priceNum: 80,
-    category: 'Starters',
-    description: 'Crispy golden pappadam served with fresh coconut chutney and mango pickle.',
-    image:
-      'https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=600&auto=format&fit=crop',
-    rating: 4.6,
-  },
-  {
-    id: 4,
-    name: 'Kerala Fish Curry',
-    priceNum: 320,
-    category: 'Main Course',
-    description: 'Authentic Kerala red fish curry slow-cooked in raw mango and coconut milk gravy.',
-    image:
-      'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=600&auto=format&fit=crop',
-    rating: 5.0,
-  },
-  {
-    id: 5,
-    name: 'Malabar Biryani',
-    priceNum: 380,
-    category: 'Main Course',
-    description:
-      'Fragrant Malabar-style biryani layered with spiced meat, caramelised onions and saffron rice.',
-    image:
-      'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?q=80&w=600&auto=format&fit=crop',
-    rating: 4.9,
-  },
-  {
-    id: 6,
-    name: 'Appam with Chicken Stew',
-    priceNum: 280,
-    category: 'Main Course',
-    description:
-      'Soft lacy hoppers paired with a creamy coconut milk chicken stew infused with whole spices.',
-    image:
-      'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=600&auto=format&fit=crop',
-    rating: 4.9,
-  },
-  {
-    id: 7,
-    name: 'Kerala Prawn Masala',
-    priceNum: 420,
-    category: 'Main Course',
-    description: 'Juicy tiger prawns cooked in a bold coconut and spice masala with curry leaves.',
-    image:
-      'https://images.unsplash.com/photo-1559847844-5315695dadae?q=80&w=600&auto=format&fit=crop',
-    rating: 4.9,
-  },
-  {
-    id: 8,
-    name: 'Palada Payasam',
-    priceNum: 120,
-    category: 'Desserts',
-    description: 'Creamy Kerala rice pudding made with ada, milk and cardamom — a festive classic.',
-    image:
-      'https://images.unsplash.com/photo-1571167366136-d0e92e9f0c78?q=80&w=600&auto=format&fit=crop',
-    rating: 4.9,
-  },
-  {
-    id: 9,
-    name: 'Pazham Halwa',
-    priceNum: 100,
-    category: 'Desserts',
-    description: 'Rich Kerala banana halwa slow-cooked with ghee, jaggery and fresh coconut.',
-    image:
-      'https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop',
-    rating: 4.7,
-  },
-  {
-    id: 10,
-    name: 'Sambharam',
-    priceNum: 60,
-    category: 'Beverages',
-    description:
-      'Traditional Kerala spiced buttermilk with ginger, green chilli and curry leaves — perfectly refreshing.',
-    image:
-      'https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=600&auto=format&fit=crop',
-    rating: 4.6,
-  },
-  {
-    id: 11,
-    name: 'Fresh Tender Coconut',
-    priceNum: 80,
-    category: 'Beverages',
-    description: "Fresh young coconut water served chilled — Kerala's most natural refresher.",
-    image:
-      'https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=600&auto=format&fit=crop',
-    rating: 4.8,
-  },
-];
 
 export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -150,8 +31,6 @@ export default function MenuPage() {
     addItem({
       id: item.id,
       name: item.name,
-      price: String(item.priceNum),
-      priceNum: item.priceNum,
       category: item.category,
       image: item.image,
     });
@@ -234,11 +113,17 @@ export default function MenuPage() {
                       className="group bg-white rounded-[40px] border border-gray-100 shadow-sm overflow-hidden hover:border-[#D4AF37]/40 hover:shadow-md transition-all duration-500 flex flex-col h-full"
                     >
                       <div className="relative h-[260px] overflow-hidden">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
+                        {item.image ? (
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                            <Utensils size={48} className="text-gray-300" />
+                          </div>
+                        )}
                         {cartItem && (
                           <div className="absolute top-5 left-5 bg-[#D4AF37] text-black text-xs font-black px-3 py-1 rounded-full">
                             ×{cartItem.quantity} in cart
@@ -251,15 +136,15 @@ export default function MenuPage() {
                           <span className="text-[#D4AF37] text-[10px] uppercase tracking-widest font-bold">
                             {item.category}
                           </span>
-                          <div className="flex items-center gap-1">
-                            <Star size={12} fill="#D4AF37" className="text-[#D4AF37]" />
-                            <span className="text-xs font-bold text-gray-500">{item.rating}</span>
-                          </div>
                         </div>
                         <h3 className="text-2xl font-serif text-gray-900 mb-3">{item.name}</h3>
-                        <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow italic font-light">
-                          {item.description}
-                        </p>
+                        {item.description ? (
+                          <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow italic font-light">
+                            {item.description}
+                          </p>
+                        ) : (
+                          <div className="flex-grow" />
+                        )}
 
                         {/* Cart Controls */}
                         {cartItem ? (

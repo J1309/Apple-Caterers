@@ -6,8 +6,6 @@ import { persist } from 'zustand/middleware';
 export interface CartItem {
   id: number;
   name: string;
-  price: string;
-  priceNum: number;
   category: string;
   image: string;
   quantity: number;
@@ -20,7 +18,6 @@ interface CartStore {
   updateQuantity: (id: number, quantity: number) => void;
   clearCart: () => void;
   totalItems: () => number;
-  totalPrice: () => number;
 }
 
 export const useCartStore = create<CartStore>()(
@@ -58,8 +55,6 @@ export const useCartStore = create<CartStore>()(
       clearCart: () => set({ items: [] }),
 
       totalItems: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
-
-      totalPrice: () => get().items.reduce((sum, i) => sum + i.priceNum * i.quantity, 0),
     }),
     { name: 'catering-cart' }
   )

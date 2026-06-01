@@ -55,14 +55,13 @@ const emptyForm: FormData = {
 };
 
 export default function CartPage() {
-  const { items, removeItem, updateQuantity, clearCart, totalItems, totalPrice } = useCartStore();
+  const { items, removeItem, updateQuantity, clearCart, totalItems } = useCartStore();
   const [form, setForm] = useState<FormData>(emptyForm);
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const cartCount = totalItems();
-  const total = totalPrice();
 
   const handleChange = (field: keyof FormData, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -248,9 +247,6 @@ export default function CartPage() {
                       <div className="flex-1 min-w-0 pt-1">
                         <p className="text-gray-900 font-semibold truncate text-sm sm:text-base">{item.name}</p>
                         <p className="text-[#D4AF37] text-xs sm:text-sm font-bold">{item.category}</p>
-                        <span className="sm:hidden text-gray-400 text-xs mt-1 block">
-                          ₹{item.priceNum} × {item.quantity}
-                        </span>
                       </div>
                       <button
                         onClick={() => removeItem(item.id)}
@@ -497,26 +493,13 @@ export default function CartPage() {
                       {item.name}
                       <span className="text-gray-400"> ×{item.quantity}</span>
                     </span>
-                    <span className="text-gray-900 font-semibold shrink-0">
-                      {(item.priceNum * item.quantity).toLocaleString()}
-                    </span>
                   </div>
                 ))}
               </div>
 
-              <div className="border-t border-gray-100 pt-6 space-y-3">
-                <div className="flex justify-between text-sm text-gray-400">
-                  <span>Subtotal ({cartCount} items)</span>
-                  <span>{total.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-900 font-bold">Estimated Total</span>
-                  <span className="text-2xl font-bold text-[#D4AF37]">
-                    {total.toLocaleString()}
-                  </span>
-                </div>
-                <p className="text-gray-400 text-xs leading-relaxed pt-2">
-                  * Final pricing will be confirmed by our team based on guest count and service
+              <div className="border-t border-gray-100 pt-6">
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Pricing will be confirmed by our team based on guest count and service
                   requirements.
                 </p>
               </div>
