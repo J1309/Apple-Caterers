@@ -40,14 +40,14 @@ export function CTASection() {
 
             <div className="flex items-center gap-8">
               <Link
-                href="https://wa.me/1234567890"
+                href="https://wa.me/919947106577"
                 className="flex items-center gap-2 text-gray-600 hover:text-maroon transition-colors"
               >
                 <MessageSquare size={20} className="text-maroon" />
                 <span>WhatsApp</span>
               </Link>
               <Link
-                href="tel:+1234567890"
+                href="tel:+919947106577"
                 className="flex items-center gap-2 text-gray-600 hover:text-maroon transition-colors"
               >
                 <Phone size={20} className="text-maroon" />

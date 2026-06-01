@@ -101,7 +101,7 @@ export default function ContactPage() {
 
             <div className="pt-8 flex gap-6">
               <Link
-                href="https://wa.me/1234567890"
+                href="https://wa.me/919947106577"
                 className="flex items-center gap-3 text-gray-700 font-bold hover:text-maroon transition-colors"
               >
                 <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center">
@@ -157,7 +157,7 @@ export default function ContactPage() {
                     </label>
                     <input
                       {...register('phone', { required: true })}
-                      placeholder="+1 (234) 000-0000"
+                      placeholder="+91 99471 06577"
                       className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-maroon transition-colors"
                     />
                   </div>
