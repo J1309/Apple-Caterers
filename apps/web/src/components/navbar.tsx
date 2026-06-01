@@ -63,7 +63,7 @@ export function Navbar() {
           </Link>
 
           <Link
-            href="https://wa.me/1234567890"
+            href="https://wa.me/919947106577"
             className="flex items-center gap-2 bg-gold hover:bg-[#c49b2e] text-maroon px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all hover:scale-105"
           >
             <MessageSquare size={14} />
@@ -118,7 +118,7 @@ export function Navbar() {
               )}
             </Link>
             <Link
-              href="https://wa.me/1234567890"
+              href="https://wa.me/919947106577"
               className="mt-8 bg-gold text-maroon px-10 py-4 rounded-full font-bold"
               onClick={() => setIsMobileMenuOpen(false)}
             >

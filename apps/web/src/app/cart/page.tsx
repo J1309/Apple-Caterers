@@ -105,7 +105,7 @@ export default function CartPage() {
     setIsSubmitting(true);
     await new Promise((res) => setTimeout(res, 1200));
     const message = buildWhatsAppMessage();
-    const waNumber = 'WHATSAPP_PHONE_NUMBER';
+    const waNumber = '919947106577';
     const waUrl = `https://wa.me/${waNumber}?text=${message}`;
     if (typeof window !== 'undefined') window.open(waUrl, '_blank');
     setSubmitted(true);

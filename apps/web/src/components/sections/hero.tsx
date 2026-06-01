@@ -121,7 +121,7 @@ export function Hero() {
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="https://wa.me/1234567890"
+                href="https://wa.me/919947106577"
                 className="group flex items-center gap-3 text-gray-700 hover:text-maroon font-semibold transition-colors"
               >
                 <div className="w-11 h-11 rounded-full border-2 border-gray-200 group-hover:border-maroon flex items-center justify-center transition-all">
