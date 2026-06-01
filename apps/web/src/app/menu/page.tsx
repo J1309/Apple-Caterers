@@ -71,7 +71,7 @@ export default function MenuPage() {
 
         {/* Categories Bar - horizontal scroll */}
         <div className="relative mb-16">
-          <div className="overflow-x-auto pb-2">
+          <div className="overflow-x-auto pb-2 scrollbar-maroon">
             <div className="flex gap-3">
             {categories.map((cat) => {
               const isAll = cat === 'All';

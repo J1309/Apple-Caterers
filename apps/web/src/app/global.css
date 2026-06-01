@@ -129,4 +129,22 @@
     body {
         @apply bg-background text-foreground selection:bg-maroon selection:text-white;
     }
+
+    .scrollbar-maroon {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(114,47,55,0.3) transparent;
+    }
+    .scrollbar-maroon::-webkit-scrollbar {
+        height: 6px;
+    }
+    .scrollbar-maroon::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .scrollbar-maroon::-webkit-scrollbar-thumb {
+        background: rgba(114,47,55,0.3);
+        border-radius: 8px;
+    }
+    .scrollbar-maroon::-webkit-scrollbar-thumb:hover {
+        background: rgba(114,47,55,0.5);
+    }
 }
