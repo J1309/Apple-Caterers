@@ -6,6 +6,7 @@ import { Providers } from './providers';
 import { Navbar } from '@/components/navbar';
 import { MobileBottomNav } from '@/components/mobile-bottom-nav';
 import { Footer } from '@/components/footer';
+import Loader from '@/components/loader';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} font-sans bg-black text-white antialiased`}
       >
+        <Loader />
         <Providers>
           <Navbar />
           <main className="min-h-screen">{children}</main>
