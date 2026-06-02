@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Plus, Minus, ShoppingBag, Check, Utensils, LayoutGrid } from 'lucide-react';
+import { Plus, Minus, ShoppingBag, Check, Utensils, LayoutGrid, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCartStore } from '@/lib/cart-store';
 import { menuItems, categories, CATEGORY_MAP } from '@/data/menu-items';
 import Link from 'next/link';
@@ -12,6 +12,32 @@ export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [isLoading, setIsLoading] = useState(true);
   const [addedIds, setAddedIds] = useState<number[]>([]);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  };
+
+  useEffect(() => {
+    checkScroll();
+    const el = scrollRef.current;
+    if (!el) return;
+    el.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+    return () => {
+      el.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, []);
+
+  const scrollBy = (dir: 'left' | 'right') => {
+    scrollRef.current?.scrollBy({ left: dir === 'left' ? -260 : 260, behavior: 'smooth' });
+  };
 
   const { addItem, items, totalItems, updateQuantity } = useCartStore();
 
@@ -71,7 +97,31 @@ export default function MenuPage() {
 
         {/* Categories Bar - horizontal scroll */}
         <div className="relative mb-16">
-          <div className="overflow-x-auto pb-2 scrollbar-maroon">
+          {canScrollLeft && (
+            <>
+              <div className="absolute left-0 top-0 bottom-2 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+              <button
+                onClick={() => scrollBy('left')}
+                className="absolute left-1 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-maroon hover:bg-gray-50 transition-all"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft size={20} />
+              </button>
+            </>
+          )}
+          {canScrollRight && (
+            <>
+              <div className="absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+              <button
+                onClick={() => scrollBy('right')}
+                className="absolute right-1 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-maroon hover:bg-gray-50 transition-all"
+                aria-label="Scroll right"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </>
+          )}
+          <div ref={scrollRef} className="overflow-x-auto pb-2 scrollbar-maroon">
             <div className="flex gap-3">
             {categories.map((cat) => {
               const isAll = cat === 'All';
