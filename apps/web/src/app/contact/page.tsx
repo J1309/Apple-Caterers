@@ -76,7 +76,7 @@ export default function ContactPage() {
                 {
                   icon: MapPin,
                   title: 'Visit Us',
-                  content: 'MG Road, Kochi, Kerala 682016',
+                  content: 'Poomkavu - Pathanamthitta Rd, Mallassery, Kerala 689646',
                   sub: 'By appointment only',
                 },
               ].map((item, i) => (

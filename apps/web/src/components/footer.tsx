@@ -141,7 +141,7 @@ export function Footer() {
           <ul className="space-y-4">
             <li className="flex items-start gap-3 text-white/60 text-sm">
               <MapPin size={18} className="text-gold shrink-0" />
-              <span>Kochi, Kerala, India</span>
+              <span>Mallassery, Pathanamthitta, Kerala 689646</span>
             </li>
             <li className="flex items-center gap-3 text-white/60 text-sm">
               <Phone size={18} className="text-gold shrink-0" />

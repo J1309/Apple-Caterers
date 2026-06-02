@@ -331,7 +331,7 @@ export default function CartPage() {
                     type="text"
                     value={form.place}
                     onChange={(e) => handleChange('place', e.target.value)}
-                    placeholder="Kochi, Kerala"
+                    placeholder="Pathanamthitta, Kerala"
                     className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-maroon transition-colors ${errors.place ? 'border-red-300' : 'border-gray-200'}`}
                   />
                   {errors.place && <p className="text-red-400 text-xs">{errors.place}</p>}
@@ -399,7 +399,7 @@ export default function CartPage() {
                     type="text"
                     value={form.venue}
                     onChange={(e) => handleChange('venue', e.target.value)}
-                    placeholder="Taj Hotel, MG Road, Kochi"
+                    placeholder="Venue name, Mallassery"
                     className={`w-full bg-gray-50 border rounded-2xl px-5 py-4 text-gray-900 text-sm placeholder-gray-300 focus:outline-none focus:border-maroon transition-colors ${errors.venue ? 'border-red-300' : 'border-gray-200'}`}
                   />
                   {errors.venue && <p className="text-red-400 text-xs">{errors.venue}</p>}
