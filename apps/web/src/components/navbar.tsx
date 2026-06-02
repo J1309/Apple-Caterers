@@ -12,7 +12,7 @@ export function Navbar() {
   const cartCount = totalItems();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-maroon h-16">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-maroon bg-maroon-glow h-16">
       <div className="container mx-auto px-6 h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
@@ -92,7 +92,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden fixed inset-0 top-0 bg-maroon z-40 flex flex-col items-center justify-center gap-8"
+            className="md:hidden fixed inset-0 top-0 bg-maroon bg-maroon-glow z-40 flex flex-col items-center justify-center gap-8"
           >
             {[
               { label: 'Home', href: '/' },
