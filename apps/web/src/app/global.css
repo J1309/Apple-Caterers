@@ -148,3 +148,7 @@
         background: rgba(114,47,55,0.5);
     }
 }
+
+.bg-maroon-glow {
+  background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 175, 55, 0.12) 0%, transparent 100%);
+}

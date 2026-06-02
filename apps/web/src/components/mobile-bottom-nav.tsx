@@ -27,7 +27,7 @@ export function MobileBottomNav() {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5 }}
-        className="bg-maroon/95 backdrop-blur-2xl border border-white/10 rounded-[32px] py-4 px-5 shadow-[0_8px_40px_rgba(0,0,0,0.10)] flex items-center justify-between"
+        className="bg-maroon/95 bg-maroon-glow backdrop-blur-2xl border border-white/10 rounded-[32px] py-4 px-5 shadow-[0_8px_40px_rgba(0,0,0,0.10)] flex items-center justify-between"
       >
         {navItems.map((item) => {
           const isActive = pathname === item.href;
