@@ -159,7 +159,7 @@ export default function MenuPage() {
             {isLoading
               ? Array.from({ length: 6 }).map((_, i) => (
                   <div key={`skeleton-${i}`} className="space-y-4">
-                    <Skeleton className="h-[260px] w-full rounded-3xl" />
+                    <Skeleton className="h-40 md:h-[200px] lg:h-[260px] w-full rounded-3xl" />
                     <Skeleton className="h-6 w-2/3" />
                     <Skeleton className="h-4 w-full" />
                     <Skeleton className="h-4 w-1/2" />
@@ -177,9 +177,9 @@ export default function MenuPage() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
                       transition={{ duration: 0.5, ease: 'easeOut' }}
-                      className="group bg-white rounded-[40px] border border-gray-100 shadow-sm overflow-hidden hover:border-maroon/40 hover:shadow-md transition-all duration-500 flex flex-col h-full"
+                      className="group bg-white rounded-2xl md:rounded-[32px] lg:rounded-[40px] border border-gray-100 shadow-sm overflow-hidden hover:border-maroon/40 hover:shadow-md transition-all duration-500 flex flex-col h-full"
                     >
-                      <div className="relative h-[260px] overflow-hidden">
+                      <div className="relative h-40 md:h-[200px] lg:h-[260px] overflow-hidden">
                         {item.image ? (
                           <img
                             src={item.image}
@@ -188,7 +188,7 @@ export default function MenuPage() {
                           />
                         ) : (
                           <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                            <Utensils size={48} className="text-gray-300" />
+                            <Utensils size={32} className="text-gray-300" />
                           </div>
                         )}
                         {cartItem && (
@@ -198,13 +198,13 @@ export default function MenuPage() {
                         )}
                       </div>
 
-                      <div className="p-8 flex flex-col flex-grow">
+                      <div className="p-4 md:p-6 lg:p-8 flex flex-col flex-grow">
                         <div className="flex items-center justify-between mb-3">
                           <span className="text-maroon text-[10px] uppercase tracking-widest font-bold">
                             {item.category}
                           </span>
                         </div>
-                        <h3 className="text-2xl font-serif text-gray-900 mb-3">{item.name}</h3>
+                        <h3 className="text-lg md:text-xl lg:text-2xl font-serif text-gray-900 mb-3">{item.name}</h3>
                         {item.description ? (
                           <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow italic font-light">
                             {item.description}
@@ -218,25 +218,25 @@ export default function MenuPage() {
                           <div className="flex items-center gap-3">
                             <button
                               onClick={() => updateQuantity(item.id, cartItem.quantity - 1)}
-                              className="w-12 h-12 rounded-2xl bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center transition-all border border-gray-200"
+                              className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center transition-all border border-gray-200"
                             >
-                              <Minus size={16} />
+                              <Minus size={14} className="md:size-4" />
                             </button>
-                            <span className="flex-1 text-center text-gray-900 font-bold text-lg">
+                            <span className="flex-1 text-center text-gray-900 font-bold text-base md:text-lg">
                               {cartItem.quantity}
                             </span>
                             <button
                               onClick={() => updateQuantity(item.id, cartItem.quantity + 1)}
-                              className="w-12 h-12 rounded-2xl bg-maroon/10 hover:bg-maroon/20 text-maroon flex items-center justify-center transition-all border border-maroon/20"
+                              className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-maroon/10 hover:bg-maroon/20 text-maroon flex items-center justify-center transition-all border border-maroon/20"
                             >
-                              <Plus size={16} />
+                              <Plus size={14} className="md:size-4" />
                             </button>
                           </div>
                         ) : (
                           <motion.button
                             onClick={() => handleAdd(item)}
                             whileTap={{ scale: 0.97 }}
-                            className={`w-full py-4 rounded-2xl text-sm font-bold transition-all flex items-center justify-center gap-2 border ${
+                            className={`w-full py-3 md:py-4 rounded-2xl text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2 border ${
                               isAdded
                                 ? 'bg-green-50 border-green-200 text-green-600'
                                 : 'bg-gray-50 hover:bg-maroon hover:text-white text-gray-700 border-gray-200 hover:border-maroon'
