@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, MessageSquare, Send, CheckCircle2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -24,11 +25,18 @@ export default function ContactPage() {
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log(data);
+    const message = encodeURIComponent(
+      `🍽️ *NEW CONTACT ENQUIRY — Apple Caterers*\n\n` +
+        `👤 *Name:* ${data.name}\n` +
+        `📞 *Phone:* ${data.phone}\n` +
+        `📅 *Event Date:* ${data.date}\n` +
+        `🎉 *Event Type:* ${data.type}\n` +
+        `👥 *Expected Guests:* ${data.guests}\n\n` +
+        `💬 *Message:*\n${data.message}`
+    );
+    window.open(`https://wa.me/919947106577?text=${message}`, '_blank', 'noopener,noreferrer');
     setIsSubmitted(true);
-    toast.success("Inquiry sent successfully! We'll get back to you soon.");
+    toast.success('WhatsApp enquiry opened. Send the message to complete your enquiry.');
   };
 
   return (
@@ -64,7 +72,7 @@ export default function ContactPage() {
                 {
                   icon: Phone,
                   title: 'Call Us',
-                  content: '+91 98765 43210',
+                  content: '+91 99471 06577',
                   sub: 'Mon-Sat, 9am - 6pm',
                 },
                 {
@@ -129,7 +137,8 @@ export default function ContactPage() {
                 </div>
                 <h2 className="text-3xl font-serif text-gray-900">Thank You!</h2>
                 <p className="text-gray-500">
-                  Your inquiry has been received. Our concierge will contact you within 24 hours.
+                  WhatsApp has opened with your enquiry details. Send the message there and our
+                  team will get back to you shortly.
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
@@ -195,8 +204,9 @@ export default function ContactPage() {
                     Expected Guests
                   </label>
                   <input
-                    {...register('guests', { required: true })}
+                    {...register('guests', { required: true, min: 1 })}
                     type="number"
+                    min="1"
                     placeholder="50"
                     className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-gray-900 focus:outline-none focus:border-maroon transition-colors"
                   />
@@ -229,5 +239,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
-import Link from 'next/link';
