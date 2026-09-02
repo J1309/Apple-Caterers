@@ -2,177 +2,208 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, MessageSquare, Star } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 import Link from 'next/link';
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] bg-white flex items-center overflow-hidden pt-20 pb-20 md:py-28">
-      {/* Subtle ambient lighting flares */}
-      <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-gold/[0.04] rounded-full blur-[140px] pointer-events-none -translate-y-1/3 translate-x-1/3" />
-      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-maroon/[0.03] rounded-full blur-[120px] pointer-events-none translate-y-1/3 -translate-x-1/3" />
+    <section className="relative bg-[#FAF7F2] text-gray-900 overflow-hidden pt-16">
+      {/* ════════════════════════════════════════════════════════════════
+          TOP HALF: Dark Brand Block (Left) + Curved Banquet Photo (Right)
+         ════════════════════════════════════════════════════════════════ */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[560px] lg:min-h-[620px]">
+        {/* ── Left Dark Maroon Block ── */}
+        <div className="lg:col-span-5 bg-[#5a1f28] text-white p-8 sm:p-12 lg:p-16 flex flex-col justify-between relative z-10">
+          {/* Subtle warm glow behind text */}
+          <div className="absolute top-0 right-0 w-72 h-72 bg-gold/10 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Micro grid texture */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #722F37 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
-        }}
-      />
+          {/* Rotating Circular Seal Badge */}
+          <div className="mb-8">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28">
+              <svg
+                viewBox="0 0 100 100"
+                className="w-full h-full animate-[spin_20s_linear_infinite]"
+              >
+                <path
+                  id="circlePath"
+                  d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                  fill="none"
+                />
+                <text className="text-[9.2px] tracking-[0.24em] uppercase fill-white/80 font-medium">
+                  <textPath href="#circlePath">
+                    ✦ EXQUISITE CATERING SERVICES •
+                  </textPath>
+                </text>
+              </svg>
+              {/* Center Icon */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="w-3 h-3 rounded-full bg-gold shadow-[0_0_12px_rgba(212,175,55,0.8)]" />
+              </div>
+            </div>
+          </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* ── LEFT: Minimalist Editorial Content ── */}
-          <div className="lg:col-span-6 space-y-8 text-left">
-            {/* Minimal Eyebrow */}
+          {/* Headline & Subtitle */}
+          <div className="space-y-6 my-auto">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl sm:text-5xl lg:text-[54px] xl:text-6xl font-serif text-white leading-[1.08] tracking-tight"
+            >
+              The Best Events <br />
+              <span className="italic text-gold">Start Here</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
+              className="text-white/70 text-sm sm:text-base leading-relaxed max-w-md font-light"
+            >
+              Quality Ingredients. Heritage Recipes. Genuine Hospitality.
+            </motion.p>
+
+            {/* Pill CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-              <span className="text-maroon font-semibold tracking-widest uppercase text-xs sm:text-sm">
-                Authentic Kerala Cuisine
-              </span>
-            </motion.div>
-
-            {/* Headline matching website's font-serif & gold italic DNA */}
-            <motion.h1
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl sm:text-6xl xl:text-7xl font-serif text-gray-900 leading-[1.08] tracking-tight"
-            >
-              The Taste of <span className="italic text-gold">Kerala</span>, <br />
-              Elevated for Your <span className="italic text-gold">Event</span>
-            </motion.h1>
-
-            {/* Narrative Subhead */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-gray-500 text-lg sm:text-xl leading-relaxed max-w-xl font-light"
-            >
-              Bespoke catering crafted with heritage recipes, hand-ground spices, and immaculate
-              presentation. From grand wedding Sadyas to celebratory evening banquets across Kerala.
-            </motion.p>
-
-            {/* Rating pill */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="flex items-center gap-3"
-            >
-              <div className="flex text-gold">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={15} fill="var(--color-gold)" className="text-gold" />
-                ))}
-              </div>
-              <p className="text-gray-500 text-sm">
-                <span className="text-gray-900 font-bold">4.9 / 5</span> — from 500+ premier celebrations
-              </p>
-            </motion.div>
-
-            {/* Minimalist CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.35 }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="pt-2"
             >
               <Link
                 href="/menu"
-                className="group inline-flex items-center justify-center gap-2 bg-maroon hover:bg-[#5a1f28] text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 hover:scale-105 shadow-[0_8px_30px_rgba(114,47,55,0.25)]"
+                className="inline-flex items-center gap-3 bg-[#E5C378] hover:bg-gold text-[#3A141A] px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition-all hover:scale-105 shadow-md active:scale-95"
               >
-                <span>Explore Menu</span>
-                <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                <span>Get A Quote</span>
+                <ArrowRight size={15} />
               </Link>
-
-              <Link
-                href="https://wa.me/919947106577"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 text-gray-700 hover:text-maroon font-semibold text-sm transition-colors py-3 sm:px-2"
-              >
-                <div className="w-10 h-10 rounded-full border border-gray-200 group-hover:border-maroon group-hover:bg-maroon/5 flex items-center justify-center transition-all">
-                  <MessageSquare size={16} />
-                </div>
-                <span>WhatsApp Us</span>
-              </Link>
-            </motion.div>
-
-            {/* Minimalist Stats Divider */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-              className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-100 max-w-lg"
-            >
-              <div>
-                <p className="text-2xl sm:text-3xl font-serif font-bold text-gray-900">500+</p>
-                <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">Events Catered</p>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-serif font-bold text-gray-900">50k+</p>
-                <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">Happy Guests</p>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-serif font-bold text-gray-900">15+ Yrs</p>
-                <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">Culinary Mastery</p>
-              </div>
             </motion.div>
           </div>
 
-          {/* ── RIGHT: Cinematic Minimalist Visual ── */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            className="lg:col-span-6 relative mt-4 lg:mt-0"
+          {/* Bottom spacing anchor */}
+          <div className="hidden lg:block h-6" />
+        </div>
+
+        {/* ── Right Large Curved Image Container ── */}
+        <div className="lg:col-span-7 relative min-h-[380px] lg:min-h-full bg-white">
+          <div className="w-full h-full lg:rounded-bl-[5rem] overflow-hidden relative shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop"
+              alt="Luxury Banquet Table Setting"
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Subtle soft gradient over image */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+            {/* Ambient luxury caption */}
+            <div className="absolute bottom-8 right-8 text-right text-white hidden sm:block">
+              <span className="text-xs uppercase tracking-widest text-gold font-semibold block mb-1">
+                Bespoke Banquets
+              </span>
+              <span className="text-lg font-serif italic text-white/90">
+                Weddings • Galas • VIP Receptions
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ════════════════════════════════════════════════════════════════
+          BOTTOM HALF: Stats with Overlapping Plate (Left) + Testimonial (Right)
+         ════════════════════════════════════════════════════════════════ */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 relative">
+        {/* ── Lower Left Block: Stats & Overlapping Plate ── */}
+        <div className="lg:col-span-5 bg-[#5a1f28] text-white p-8 sm:p-12 lg:p-16 relative overflow-hidden flex flex-col justify-center">
+          {/* Subtle Decorative Wave Contours */}
+          <svg
+            viewBox="0 0 500 200"
+            fill="none"
+            className="absolute -bottom-10 left-0 w-full opacity-15 pointer-events-none"
           >
-            {/* Soft backdrop glow */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-gold/10 to-maroon/5 rounded-[3rem] blur-2xl -z-10" />
+            <path
+              d="M0,100 C150,180 350,20 500,100 L500,200 L0,200 Z"
+              stroke="#D4AF37"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M0,130 C180,200 320,50 500,120 L500,200 L0,200 Z"
+              stroke="#D4AF37"
+              strokeWidth="1"
+            />
+          </svg>
 
-            {/* Main Showcase Image Frame */}
-            <div className="relative rounded-3xl lg:rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100 aspect-[4/3] sm:aspect-[16/11]">
-              <img
-                src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=1200&auto=format&fit=crop"
-                alt="Kerala Traditional Sadya Banquet"
-                className="w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-              {/* Minimal caption on image bottom */}
-              <div className="absolute bottom-6 left-6 right-6 text-white text-left">
-                <p className="text-xs uppercase tracking-widest text-amber-300 font-semibold mb-1">
-                  Grand Sadya Feast
-                </p>
-                <p className="text-base sm:text-lg font-serif italic text-white/95">
-                  Heritage Flavours on Fresh Plantain Leaves
-                </p>
-              </div>
+          {/* Stats Row */}
+          <div className="grid grid-cols-2 gap-8 relative z-10 pl-0 sm:pl-4">
+            <div className="space-y-1">
+              <p className="text-4xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+                15<span className="text-gold font-light">+</span>
+              </p>
+              <p className="text-xs font-serif italic text-gold font-medium">years experience</p>
+              <p className="text-[11px] text-white/60 font-light">among executive culinary team</p>
             </div>
 
-            {/* Floating Minimalist Trust Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="absolute -bottom-6 -left-4 sm:left-6 bg-white/95 backdrop-blur-md px-5 py-3.5 rounded-2xl border border-gray-100 shadow-xl flex items-center gap-3.5 hidden sm:flex text-left"
-            >
-              <div className="w-10 h-10 rounded-xl bg-amber-50 text-gold flex items-center justify-center shrink-0">
-                <Star size={18} fill="var(--color-gold)" className="text-gold" />
+            <div className="space-y-1">
+              <p className="text-4xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+                500<span className="text-gold font-light">+</span>
+              </p>
+              <p className="text-xs font-serif italic text-gold font-medium">events each year</p>
+              <p className="text-[11px] text-white/60 font-light">across 15+ premier venues</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Lower Right Block: Warm Cream Testimonial ── */}
+        <div className="lg:col-span-7 bg-[#FAF7F2] p-8 sm:p-12 lg:p-16 flex flex-col justify-center relative">
+          {/* Decorative Giant Quotation Mark */}
+          <span className="absolute top-6 right-10 text-8xl lg:text-9xl font-serif text-amber-900/[0.07] select-none pointer-events-none leading-none">
+            “
+          </span>
+
+          <div className="max-w-xl relative z-10 space-y-6">
+            {/* Client Badge */}
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-full bg-maroon/10 flex items-center justify-center">
+                <Star size={12} fill="var(--color-gold)" className="text-gold" />
               </div>
+              <span className="text-xs font-bold tracking-wider uppercase text-maroon">
+                Client Review
+              </span>
+            </div>
+
+            {/* Testimonial Quote in Website Font-Serif */}
+            <blockquote className="text-xl sm:text-2xl lg:text-3xl font-serif text-gray-900 leading-snug tracking-tight">
+              “The food was brilliant, Apple Caterers made everything so effortless that we can't
+              wait to use them again.”
+            </blockquote>
+
+            {/* Author Credit */}
+            <div className="flex items-center justify-between pt-2">
               <div>
-                <p className="text-xs font-bold text-gray-900">Premier Kerala Catering</p>
-                <p className="text-[11px] text-gray-400">Weddings • Corporate • Private Galas</p>
+                <p className="text-xs font-bold text-gray-900 uppercase tracking-wider">
+                  Dr. Thomas Kurian
+                </p>
+                <p className="text-[11px] text-gray-500 font-light">
+                  Host, Grand Wedding Reception, Kottayam
+                </p>
               </div>
-            </motion.div>
-          </motion.div>
+
+              {/* Carousel Pagination Indicator Dots */}
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-gold" />
+                <span className="w-2.5 h-2.5 rounded-full border border-gray-400" />
+                <span className="w-2.5 h-2.5 rounded-full border border-gray-400" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Overlapping Gourmet Plate (Breaking Out on Bottom-Left) ── */}
+        <div className="hidden lg:block absolute -bottom-16 left-0 -translate-x-1/4 z-20 w-44 h-44 xl:w-52 xl:h-52 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop"
+            alt="Artisanal Plated Culinary Dish"
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
     </section>
