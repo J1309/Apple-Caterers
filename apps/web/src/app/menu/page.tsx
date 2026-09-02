@@ -3,15 +3,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Plus, Minus, ShoppingBag, Check, Utensils, LayoutGrid, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Plus, Minus, ShoppingBag, Check, Utensils, LayoutGrid, ChevronLeft, ChevronRight, Search, Sparkles, PackageCheck } from 'lucide-react';
 import { useCartStore } from '@/lib/cart-store';
-import { menuItems, categories, CATEGORY_MAP } from '@/data/menu-items';
+import { menuItems, categories, CATEGORY_MAP, curatedPackages, CuratedPackage } from '@/data/menu-items';
 import Link from 'next/link';
 
 export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [dietaryFilter, setDietaryFilter] = useState<'all' | 'veg' | 'non-veg'>('all');
+  const [isLoading, setIsLoading] = useState(false);
   const [addedIds, setAddedIds] = useState<number[]>([]);
+  const [importedPkgId, setImportedPkgId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -41,15 +44,19 @@ export default function MenuPage() {
 
   const { addItem, items, totalItems, updateQuantity } = useCartStore();
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1500);
-    return () => clearTimeout(timer);
-  }, []);
+  const filteredItems = menuItems.filter((item) => {
+    const matchesCategory = activeCategory === 'All' || item.category === activeCategory;
+    const matchesSearch =
+      searchQuery.trim() === '' ||
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.category.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesDietary =
+      dietaryFilter === 'all' ||
+      (dietaryFilter === 'veg' && item.isVeg) ||
+      (dietaryFilter === 'non-veg' && !item.isVeg);
 
-  const filteredItems =
-    activeCategory === 'All'
-      ? menuItems
-      : menuItems.filter((item) => item.category === activeCategory);
+    return matchesCategory && matchesSearch && matchesDietary;
+  });
 
   const getCartItem = (id: number) => items.find((i) => i.id === id);
 
@@ -64,12 +71,28 @@ export default function MenuPage() {
     setTimeout(() => setAddedIds((prev) => prev.filter((id) => id !== item.id)), 1500);
   };
 
+  const handleImportPackage = (pkg: CuratedPackage) => {
+    pkg.itemIds.forEach((id) => {
+      const item = menuItems.find((m) => m.id === id);
+      if (item) {
+        addItem({
+          id: item.id,
+          name: item.name,
+          category: item.category,
+          image: item.image,
+        });
+      }
+    });
+    setImportedPkgId(pkg.id);
+    setTimeout(() => setImportedPkgId(null), 2000);
+  };
+
   const cartCount = totalItems();
 
   return (
     <div className="pt-32 pb-32 bg-white min-h-screen">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-10 space-y-4">
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -90,13 +113,124 @@ export default function MenuPage() {
             transition={{ delay: 0.2 }}
             className="text-gray-500 text-sm max-w-md mx-auto"
           >
-            Add your favourite dishes to the cart, then confirm your event details to send us an
-            enquiry.
+            Explore 150+ dishes or choose a pre-curated event package for instant cart setup.
           </motion.p>
         </div>
 
+        {/* 🌟 Curated Event Packages Section */}
+        <div className="mb-14">
+          <div className="flex items-center gap-2 mb-6">
+            <Sparkles className="text-amber-500" size={20} />
+            <h2 className="text-xl md:text-2xl font-serif text-gray-900 font-bold">Curated Event Packages</h2>
+            <span className="text-xs bg-amber-100 text-amber-800 font-bold px-2.5 py-0.5 rounded-full ml-auto">
+              1-Click Instant Import
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {curatedPackages.map((pkg) => {
+              const isImported = importedPkgId === pkg.id;
+              return (
+                <div
+                  key={pkg.id}
+                  className="bg-gradient-to-b from-gray-50 to-white rounded-2xl p-5 border border-gray-200 hover:border-amber-400 hover:shadow-md transition-all flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-2xl">{pkg.icon}</span>
+                      <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full bg-maroon/10 text-maroon">
+                        {pkg.badge}
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-lg font-bold text-gray-900 mb-1">{pkg.name}</h3>
+                    <p className="text-xs text-maroon font-medium mb-2">{pkg.tagline}</p>
+                    <p className="text-xs text-gray-500 leading-relaxed mb-4">{pkg.description}</p>
+                  </div>
+
+                  <div>
+                    <div className="text-xs font-semibold text-gray-700 bg-gray-100 px-3 py-1.5 rounded-lg text-center mb-3">
+                      Est: <span className="text-maroon font-bold">{pkg.estimatedPriceRange}</span>
+                    </div>
+                    <button
+                      onClick={() => handleImportPackage(pkg)}
+                      className={`w-full py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 border ${
+                        isImported
+                          ? 'bg-emerald-600 border-emerald-600 text-white'
+                          : 'bg-maroon hover:bg-maroon/90 text-white border-maroon'
+                      }`}
+                    >
+                      {isImported ? (
+                        <>
+                          <PackageCheck size={16} />
+                          Package Imported!
+                        </>
+                      ) : (
+                        <>
+                          <Plus size={16} />
+                          Add {pkg.itemIds.length} Items to Cart
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* 🔎 Search Bar & Dietary Filter */}
+        <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-10 bg-gray-50 p-4 rounded-2xl border border-gray-200">
+          {/* Search Box */}
+          <div className="relative w-full md:w-96">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+            <input
+              type="text"
+              placeholder="Search dishes (e.g. Biriyani, Appam, Chicken...)"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:border-maroon focus:outline-none text-sm text-gray-800 bg-white"
+            />
+          </div>
+
+          {/* Dietary Filter Pills */}
+          <div className="flex items-center gap-2 w-full md:w-auto">
+            <button
+              onClick={() => setDietaryFilter('all')}
+              className={`flex-1 md:flex-none px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
+                dietaryFilter === 'all'
+                  ? 'bg-gray-900 text-white border-gray-900'
+                  : 'bg-white text-gray-600 border-gray-300 hover:border-gray-400'
+              }`}
+            >
+              All Items
+            </button>
+            <button
+              onClick={() => setDietaryFilter('veg')}
+              className={`flex-1 md:flex-none px-4 py-2 rounded-xl text-xs font-bold transition-all border flex items-center justify-center gap-1.5 ${
+                dietaryFilter === 'veg'
+                  ? 'bg-emerald-600 text-white border-emerald-600'
+                  : 'bg-white text-emerald-700 border-emerald-200 hover:border-emerald-400'
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              Veg Only
+            </button>
+            <button
+              onClick={() => setDietaryFilter('non-veg')}
+              className={`flex-1 md:flex-none px-4 py-2 rounded-xl text-xs font-bold transition-all border flex items-center justify-center gap-1.5 ${
+                dietaryFilter === 'non-veg'
+                  ? 'bg-rose-600 text-white border-rose-600'
+                  : 'bg-white text-rose-700 border-rose-200 hover:border-rose-400'
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-rose-500" />
+              Non-Veg Only
+            </button>
+          </div>
+        </div>
+
         {/* Categories Bar - horizontal scroll */}
-        <div className="relative mb-16">
+        <div className="relative mb-12">
           {canScrollLeft && (
             <>
               <div className="absolute left-0 top-0 bottom-2 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
@@ -123,34 +257,41 @@ export default function MenuPage() {
           )}
           <div ref={scrollRef} className="overflow-x-auto pb-2 scrollbar-maroon">
             <div className="flex gap-3">
-            {categories.map((cat) => {
-              const isAll = cat === 'All';
-              const info = !isAll ? CATEGORY_MAP[cat as keyof typeof CATEGORY_MAP] : null;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`flex flex-col items-center justify-center gap-2 min-w-[120px] h-[100px] rounded-2xl border transition-all duration-300 shrink-0 snap-start ${
-                    activeCategory === cat
-                      ? isAll
-                        ? 'bg-maroon border-maroon text-white shadow-[0_4px_16px_rgba(114,47,55,0.3)]'
-                        : `bg-gradient-to-br ${info?.gradient} text-white border-transparent shadow-lg`
-                      : 'bg-white border-gray-200 text-gray-500 hover:border-gray-400 hover:text-gray-900'
-                  }`}
-                >
-                  {isAll ? (
-                    <LayoutGrid size={22} className="shrink-0" />
-                  ) : (
-                    <span className="text-2xl">{info?.icon}</span>
-                  )}
-                  <span className="text-xs font-semibold text-center leading-tight max-w-[100px]">
-                    {cat}
-                  </span>
-                </button>
-              );
-            })}
+              {categories.map((cat) => {
+                const isAll = cat === 'All';
+                const info = !isAll ? CATEGORY_MAP[cat as keyof typeof CATEGORY_MAP] : null;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`flex flex-col items-center justify-center gap-2 min-w-[120px] h-[100px] rounded-2xl border transition-all duration-300 shrink-0 snap-start ${
+                      activeCategory === cat
+                        ? isAll
+                          ? 'bg-maroon border-maroon text-white shadow-[0_4px_16px_rgba(114,47,55,0.3)]'
+                          : `bg-gradient-to-br ${info?.gradient} text-white border-transparent shadow-lg`
+                        : 'bg-white border-gray-200 text-gray-500 hover:border-gray-400 hover:text-gray-900'
+                    }`}
+                  >
+                    {isAll ? (
+                      <LayoutGrid size={22} className="shrink-0" />
+                    ) : (
+                      <span className="text-2xl">{info?.icon}</span>
+                    )}
+                    <span className="text-xs font-semibold text-center leading-tight max-w-[100px]">
+                      {cat}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          </div>
+        </div>
+
+        {/* Results Counter */}
+        <div className="flex items-center justify-between mb-6">
+          <p className="text-xs font-medium text-gray-500">
+            Showing <span className="font-bold text-gray-900">{filteredItems.length}</span> dishes
+          </p>
         </div>
 
         {/* Grid */}
@@ -176,7 +317,7 @@ export default function MenuPage() {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.5, ease: 'easeOut' }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
                       className="group bg-white rounded-2xl md:rounded-[32px] lg:rounded-[40px] border border-gray-100 shadow-sm overflow-hidden hover:border-maroon/40 hover:shadow-md transition-all duration-500 flex flex-col h-full"
                     >
                       <div className="relative h-40 md:h-[200px] lg:h-[260px] overflow-hidden">
@@ -191,8 +332,15 @@ export default function MenuPage() {
                             <Utensils size={32} className="text-gray-300" />
                           </div>
                         )}
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md text-[10px] font-bold">
+                          {item.isVeg ? (
+                            <span className="text-emerald-700 flex items-center gap-1">🟢 Veg</span>
+                          ) : (
+                            <span className="text-rose-700 flex items-center gap-1">🔴 Non-Veg</span>
+                          )}
+                        </div>
                         {cartItem && (
-                          <div className="absolute top-5 left-5 bg-maroon text-white text-xs font-black px-3 py-1 rounded-full">
+                          <div className="absolute top-4 left-4 bg-maroon text-white text-xs font-black px-3 py-1 rounded-full">
                             ×{cartItem.quantity} in cart
                           </div>
                         )}
@@ -291,3 +439,4 @@ export default function MenuPage() {
     </div>
   );
 }
+

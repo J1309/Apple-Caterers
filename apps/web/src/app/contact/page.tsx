@@ -25,6 +25,24 @@ export default function ContactPage() {
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
+    try {
+      await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.name,
+          phone: data.phone,
+          eventDate: data.date,
+          eventType: data.type,
+          guestCount: data.guests,
+          message: data.message,
+          source: 'contact_form',
+        }),
+      });
+    } catch (err) {
+      console.warn('API Enquiry recording endpoint failed', err);
+    }
+
     const message = encodeURIComponent(
       `🍽️ *NEW CONTACT ENQUIRY — Apple Caterers*\n\n` +
         `👤 *Name:* ${data.name}\n` +

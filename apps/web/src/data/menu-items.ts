@@ -4,6 +4,18 @@ export interface MenuItem {
   category: string;
   description: string;
   image: string;
+  isVeg?: boolean;
+}
+
+export interface CuratedPackage {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  estimatedPriceRange: string;
+  icon: string;
+  badge: string;
+  itemIds: number[];
 }
 
 export const categories = [
@@ -24,7 +36,60 @@ export const categories = [
   'Soup Items',
 ];
 
-export const menuItems: MenuItem[] = [
+const nonVegKeywords = ['chicken', 'beef', 'mutton', 'fish', 'prawns', 'crab', 'duck', 'kaada', 'egg', 'meat', 'barbeque'];
+
+const isItemVeg = (name: string, category: string): boolean => {
+  const lowerName = name.toLowerCase();
+  if (lowerName.includes('veg') && !lowerName.includes('non veg')) return true;
+  if (nonVegKeywords.some(kw => lowerName.includes(kw))) return false;
+  if (['Fried Items'].includes(category)) return false;
+  return true;
+};
+
+export const curatedPackages: CuratedPackage[] = [
+  {
+    id: 'grand-sadya',
+    name: 'Grand Kerala Sadya',
+    tagline: 'Traditional Festive Vegetarian Banquet',
+    description: 'Authentic traditional Kerala Sadya with Palappam, Erissery, Aviyal, Thoran, Adapradhaman and sides.',
+    estimatedPriceRange: '₹280 – ₹350 / head',
+    icon: '🌿',
+    badge: 'Popular Veg',
+    itemIds: [1, 17, 42, 43, 44, 45, 46, 47, 48, 75, 76, 85],
+  },
+  {
+    id: 'royal-banquet',
+    name: 'Royal Non-Veg Feast',
+    tagline: 'Premium Celebration & Wedding Menu',
+    description: 'Sumptuous celebration featuring Chicken Biriyani, Fish Molly, Beef Fry, Chicken 65, and Royal Falooda.',
+    estimatedPriceRange: '₹450 – ₹600 / head',
+    icon: '👑',
+    badge: 'Chef Choice',
+    itemIds: [4, 23, 54, 58, 62, 68, 70, 76, 86, 99],
+  },
+  {
+    id: 'corporate-buffet',
+    name: 'Executive Corporate Buffet',
+    tagline: 'Refined Dining for Business Conferences',
+    description: 'Sophisticated spread including Butter Naan, Chicken Stew, Mutton Kuruma, Salads, and Pudding.',
+    estimatedPriceRange: '₹400 – ₹520 / head',
+    icon: '💼',
+    badge: 'Corporate Preferred',
+    itemIds: [5, 25, 66, 69, 71, 88, 90, 110],
+  },
+  {
+    id: 'high-tea-reception',
+    name: 'Cocktail & Evening High Tea',
+    tagline: 'Finger Foods & Live Food Stations',
+    description: 'Fun interactive event with Cocktail Samosas, Chicken Lollipop, Live Jileby, Popcorn, and Badam Milk.',
+    estimatedPriceRange: '₹250 – ₹350 / head',
+    icon: '🎉',
+    badge: 'Party Special',
+    itemIds: [9, 29, 31, 34, 39, 98, 102, 103],
+  },
+];
+
+const rawMenuItems: Omit<MenuItem, 'isVeg'>[] = [
   // 1. WELCOME DRINKS
   { id: 1, name: 'Mango Juice', category: 'Welcome Drinks', description: '', image: '/images/menu/mango-juice.webp' },
   { id: 2, name: 'Cocktail', category: 'Welcome Drinks', description: '', image: '/images/menu/cocktail-drink.webp' },
@@ -156,6 +221,11 @@ export const menuItems: MenuItem[] = [
   { id: 115, name: 'Pumpkin Soup', category: 'Soup Items', description: '', image: '/images/menu/pumpkin-soup.webp' },
 ];
 
+export const menuItems: MenuItem[] = rawMenuItems.map(item => ({
+  ...item,
+  isVeg: isItemVeg(item.name, item.category),
+}));
+
 export const CATEGORY_MAP = {
   'Welcome Drinks': { gradient: 'from-amber-400 to-orange-500', icon: '🥤' },
   'First Course': { gradient: 'from-yellow-400 to-amber-500', icon: '🫓' },
@@ -172,3 +242,4 @@ export const CATEGORY_MAP = {
   'Chinese Items': { gradient: 'from-red-600 to-orange-600', icon: '🥡' },
   'Soup Items': { gradient: 'from-yellow-500 to-orange-500', icon: '🍜' },
 } as const;
+

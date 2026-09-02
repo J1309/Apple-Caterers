@@ -17,6 +17,8 @@ import {
   Building2,
   Users,
   MessageSquare,
+  Printer,
+  RefreshCw,
 } from 'lucide-react';
 import { useCartStore } from '@/lib/cart-store';
 import Link from 'next/link';
@@ -103,7 +105,21 @@ export default function CartPage() {
     if (!validate()) return;
     if (items.length === 0) return;
     setIsSubmitting(true);
-    await new Promise((res) => setTimeout(res, 1200));
+
+    try {
+      await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          items,
+          source: 'cart_checkout',
+        }),
+      });
+    } catch (err) {
+      console.warn('API Enquiry recording endpoint failed, fallbacking directly to WhatsApp', err);
+    }
+
     const message = buildWhatsAppMessage();
     const waNumber = '919947106577';
     const waUrl = `https://wa.me/${waNumber}?text=${message}`;
@@ -111,6 +127,20 @@ export default function CartPage() {
     setSubmitted(true);
     clearCart();
     setIsSubmitting(false);
+  };
+
+  const handleSyncWithGuests = () => {
+    const count = parseInt(form.guestCount, 10);
+    if (isNaN(count) || count < 1) return;
+    items.forEach((item) => {
+      updateQuantity(item.id, count);
+    });
+  };
+
+  const handlePrintQuote = () => {
+    if (typeof window !== 'undefined') {
+      window.print();
+    }
   };
 
   /* ── Success Screen ── */
@@ -405,9 +435,20 @@ export default function CartPage() {
                   {errors.venue && <p className="text-red-400 text-xs">{errors.venue}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label className="flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest font-semibold">
-                    <Users size={13} className="text-maroon" /> Number of Guests
-                  </label>
+                  <div className="flex items-center justify-between">
+                    <label className="flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest font-semibold">
+                      <Users size={13} className="text-maroon" /> Number of Guests
+                    </label>
+                    {form.guestCount && Number(form.guestCount) > 0 && (
+                      <button
+                        type="button"
+                        onClick={handleSyncWithGuests}
+                        className="text-[11px] text-maroon hover:underline flex items-center gap-1 font-bold"
+                      >
+                        <RefreshCw size={11} /> Sync Item Quantities
+                      </button>
+                    )}
+                  </div>
                   <input
                     type="number"
                     min="1"
@@ -485,7 +526,17 @@ export default function CartPage() {
               transition={{ delay: 0.3 }}
               className="bg-white rounded-[32px] border border-gray-100 shadow-sm p-8 space-y-6"
             >
-              <h2 className="text-xl font-serif text-gray-900">Order Summary</h2>
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-serif text-gray-900">Order Summary</h2>
+                <button
+                  type="button"
+                  onClick={handlePrintQuote}
+                  className="text-xs font-bold text-maroon hover:text-maroon/80 flex items-center gap-1.5 border border-maroon/20 px-3 py-1.5 rounded-xl hover:bg-maroon/5 transition-all"
+                  title="Print or Save Quote PDF"
+                >
+                  <Printer size={14} /> Print Quote
+                </button>
+              </div>
               <div className="space-y-4">
                 {items.map((item) => (
                   <div key={item.id} className="flex items-center justify-between text-sm">
