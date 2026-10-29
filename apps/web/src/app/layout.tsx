@@ -8,8 +8,8 @@ import { Footer } from '@/components/footer';
 import Loader from '@/components/loader';
 
 export const metadata: Metadata = {
-  title: 'Apple Caterers | Exquisite Culinary Experiences',
-  description: 'High-end catering services for weddings, corporate events, and private gatherings.',
+  title: 'Apple Events | Exquisite Culinary & Event Experiences',
+  description: 'Premium event dining and hospitality for weddings, corporate galas, and private gatherings.',
 };
 
 export default function RootLayout({

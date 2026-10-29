@@ -40,7 +40,7 @@ export default function Loader() {
 
           <motion.img
             src="/images/logo/AC_logo.png"
-            alt="Apple Caterers"
+            alt="Apple Events"
             className="w-32 h-32 md:w-48 md:h-48 object-contain relative z-10"
             animate={{
               y: [0, -8, 0],

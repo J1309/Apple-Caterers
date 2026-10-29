@@ -57,7 +57,7 @@ export function Footer() {
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="space-y-6">
           <h3 className="text-xl font-bold tracking-tighter">
-            APPLE<span className="text-gold">CATERERS</span>
+            APPLE<span className="text-gold">EVENTS</span>
           </h3>
           <p className="text-white/60 text-sm leading-relaxed max-w-xs">
             Elevating your events with exquisite culinary experiences and impeccable service. From
@@ -127,9 +127,9 @@ export function Footer() {
             Services
           </h4>
           <ul className="space-y-4">
-            <li className="text-white/60 text-sm">Wedding Catering</li>
+            <li className="text-white/60 text-sm">Weddings & Receptions</li>
             <li className="text-white/60 text-sm">Corporate Events</li>
-            <li className="text-white/60 text-sm">Birthday Parties</li>
+            <li className="text-white/60 text-sm">Birthday Celebrations</li>
             <li className="text-white/60 text-sm">Private Dinners</li>
           </ul>
         </div>
@@ -149,14 +149,14 @@ export function Footer() {
             </li>
             <li className="flex items-center gap-3 text-white/60 text-sm">
               <Mail size={18} className="text-gold shrink-0" />
-              <span>hello@premiumcatering.com</span>
+              <span>appleevents919@gmail.com</span>
             </li>
           </ul>
         </div>
       </div>
       <div className="container mx-auto px-6 mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-white/40 text-xs text-center md:text-left">
-          © 2026 Apple Caterers. All rights reserved.
+          © 2026 Apple Events. All rights reserved.
         </p>
         <div className="flex gap-6">
           <Link href="#" className="text-white/40 hover:text-white text-xs transition-colors">

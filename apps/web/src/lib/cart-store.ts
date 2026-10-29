@@ -56,6 +56,6 @@ export const useCartStore = create<CartStore>()(
 
       totalItems: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
     }),
-    { name: 'catering-cart' }
+    { name: 'apple-events-cart' }
   )
 );

@@ -29,7 +29,7 @@ const eventTypes = [
   'Birthday Party',
   'Private Dinner',
   'Anniversary',
-  'Outdoor Catering',
+  'Outdoor Celebration',
   'Cocktail Reception',
   'Other',
 ];
@@ -87,7 +87,7 @@ export default function CartPage() {
   const buildWhatsAppMessage = (): string => {
     const itemLines = items.map((item) => `  • ${item.name} ×${item.quantity}`).join('\n');
     return encodeURIComponent(
-      `🍽️ *NEW CATERING ENQUIRY — Apple Caterers*\n\n` +
+      `🍽️ *NEW EVENT ENQUIRY — Apple Events*\n\n` +
         `👤 *Name:* ${form.name}\n` +
         `📍 *Place:* ${form.place}\n` +
         `🎉 *Event Type:* ${form.eventType}\n` +

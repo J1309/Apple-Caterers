@@ -18,7 +18,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2">
           <motion.img
             src="/images/logo/company_logo.png"
-            alt="Apple Caterers"
+            alt="Apple Events"
             className="h-8 md:h-10 object-contain"
             whileHover={{ rotate: 10 }}
             transition={{ type: 'spring', stiffness: 300 }}

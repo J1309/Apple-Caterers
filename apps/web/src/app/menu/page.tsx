@@ -105,7 +105,7 @@ export default function MenuPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-serif text-gray-900"
           >
-            Our Catering <span className="italic text-gold">Menu</span>
+            Our Event <span className="italic text-gold">Menu</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 10 }}

@@ -27,7 +27,7 @@ const floatingCards = [
 ];
 
 const stats = [
-  { icon: ChefHat, value: '200+', label: 'Events Catered' },
+  { icon: ChefHat, value: '200+', label: 'Events Hosted' },
   { icon: Users, value: '50k+', label: 'Happy Guests' },
   { icon: Award, value: '15+', label: 'Years of Excellence' },
 ];
@@ -84,7 +84,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-gray-500 text-lg leading-relaxed max-w-lg"
             >
-              Apple Caterers brings the rich flavours of Kerala — from festive Sadya spreads to
+              Apple Events brings the rich flavours of Kerala — from festive Sadya spreads to
               aromatic Malabar Biryani — straight to your wedding, corporate event, or celebration.
             </motion.p>
 

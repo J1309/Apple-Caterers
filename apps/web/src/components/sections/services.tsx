@@ -16,14 +16,14 @@ const services = [
   {
     title: 'Corporate Events',
     description:
-      'Professional catering that leaves a lasting impression on your clients and colleagues.',
+      'Professional dining and hospitality that leaves a lasting impression on your clients and colleagues.',
     icon: Briefcase,
     image:
       'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800&auto=format&fit=crop',
   },
   {
     title: 'Birthdays',
-    description: 'Fun, vibrant, and delicious catering for birthday celebrations of all ages.',
+    description: 'Fun, vibrant, and delicious dining for birthday celebrations of all ages.',
     icon: PartyPopper,
     image:
       'https://images.unsplash.com/photo-1530103043960-ef38714abb15?q=80&w=800&auto=format&fit=crop',
@@ -47,7 +47,7 @@ export function Services() {
             Our Expertise
           </span>
           <h2 className="text-4xl md:text-5xl font-serif text-gray-900">
-            Bespoke Catering <span className="italic text-gold">Solutions</span>
+            Bespoke Event <span className="italic text-gold">Experiences</span>
           </h2>
         </div>
 

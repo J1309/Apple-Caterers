@@ -44,7 +44,7 @@ export default function ContactPage() {
     }
 
     const message = encodeURIComponent(
-      `🍽️ *NEW CONTACT ENQUIRY — Apple Caterers*\n\n` +
+      `🍽️ *NEW CONTACT ENQUIRY — Apple Events*\n\n` +
         `👤 *Name:* ${data.name}\n` +
         `📞 *Phone:* ${data.phone}\n` +
         `📅 *Event Date:* ${data.date}\n` +
@@ -80,7 +80,7 @@ export default function ContactPage() {
                 <span className="italic text-gold">Culinary Story</span>
               </motion.h1>
               <p className="text-gray-500 text-lg leading-relaxed max-w-md">
-                We're here to answer any questions and help you plan an unforgettable catering
+                We're here to answer any questions and help you plan an unforgettable event
                 experience.
               </p>
             </div>
@@ -96,7 +96,7 @@ export default function ContactPage() {
                 {
                   icon: Mail,
                   title: 'Email Us',
-                  content: 'hello@applecaterers.com',
+                  content: 'appleevents919@gmail.com',
                   sub: 'Response within 24 hours',
                 },
                 {
